@@ -91,6 +91,7 @@ public class Dates {
 
     private static boolean isHoliday(Date date, boolean isSaturdayIsHoliday, boolean isSundayIsHoliday, List<DayMonth> holidaysInYear) {
         Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
 
         if (isSaturdayIsHoliday && calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
             return true;
