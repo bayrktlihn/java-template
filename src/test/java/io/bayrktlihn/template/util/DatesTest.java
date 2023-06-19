@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +17,14 @@ class DatesTest {
         Date date = Dates.createDate(1995, 10, 4);
         String dateString = Dates.toString(date, "dd.MM.yyyy");
         Assertions.assertEquals("04.10.1995", dateString);
+    }
+
+    @Test
+    void equalsWithoutTime(){
+        Date date = Dates.createStarOfDayDate(1995, 10, 4);
+        Date dateAfter12Hours = Date.from(date.toInstant().plus(12, ChronoUnit.HOURS));
+
+        Assertions.assertTrue(Dates.equalsWithoutTime(date, dateAfter12Hours));
     }
 
     @Test

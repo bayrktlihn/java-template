@@ -89,6 +89,33 @@ public class Dates {
         return simpleDateFormat.format(date);
     }
 
+    public static boolean equalsWithoutTime(Date d1, Date d2) {
+        Calendar c1 = Calendar.getInstance();
+        Calendar c2 = Calendar.getInstance();
+
+        c1.setTime(d1);
+        c2.setTime(d2);
+
+        int c1Year = c1.get(Calendar.YEAR);
+        int c2Year = c2.get(Calendar.YEAR);
+        if (c1Year != c2Year) {
+            return false;
+        }
+
+        int c1Month = c1.get(Calendar.MONTH);
+        int c2Month = c2.get(Calendar.MONTH);
+        if (c1Month != c2Month) {
+            return false;
+        }
+
+        int c1DayOfMonth = c1.get(Calendar.DAY_OF_MONTH);
+        int c2DayOfMonth = c2.get(Calendar.DAY_OF_MONTH);
+        if (c1DayOfMonth != c2DayOfMonth) {
+            return false;
+        }
+        return true;
+    }
+
     private static boolean isHoliday(Date date, boolean isSaturdayIsHoliday, boolean isSundayIsHoliday, List<DayMonth> holidaysInYear) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
