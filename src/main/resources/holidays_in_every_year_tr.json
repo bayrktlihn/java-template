@@ -1,5 +1,9 @@
 [
   {
+    "dayOfMonth": 1,
+    "month": 1
+  },
+  {
     "dayOfMonth": 15,
     "month": 7
   },
@@ -18,5 +22,9 @@
   {
     "dayOfMonth": 29,
     "month": 10
+  },
+  {
+    "dayOfMonth": 30,
+    "month": 8
   }
 ]
