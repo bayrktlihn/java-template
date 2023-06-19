@@ -6,18 +6,18 @@ import java.nio.file.Paths;
 
 public class PathUtil {
 
-	public static Path getPathFromClasspath(String path) {
+    public static Path getPathFromClasspath(String path) {
 
-		try {
+        try {
 
-			URL url = Thread.currentThread().getContextClassLoader().getResource(path);
+            URL url = Thread.currentThread().getContextClassLoader().getResource(path);
 
-			return Paths.get(url.toURI());
+            return Paths.get(url.toURI());
 
-		} catch (Exception e) {
-			return null;
-		}
+        } catch (Exception e) {
+            return null;
+        }
 
-	}
+    }
 
 }
