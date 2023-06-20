@@ -3,6 +3,7 @@ package io.bayrktlihn.template.util;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Map;
 import java.util.Properties;
 
 public class ApplicationProperties {
@@ -19,6 +20,10 @@ public class ApplicationProperties {
 
     public <T> T getValue(String key, Class<T> clazz) {
         return (T) properties.getProperty(key);
+    }
+
+    public Properties getValues(){
+        return properties;
     }
 
     private Properties loadProperties() {
@@ -45,6 +50,13 @@ public class ApplicationProperties {
 
             if (profile != null) {
                 properties.put(PROFILE_KEY, profile);
+            }
+
+            Map<String, String> passedSystemProperties = Jvm.getPassedSystemProperties();
+            if(passedSystemProperties != null && !passedSystemProperties.isEmpty()){
+                for (Map.Entry<String, String> passedSystemProperty : passedSystemProperties.entrySet()) {
+                    properties.put(passedSystemProperty.getKey(), passedSystemProperty.getValue());
+                }
             }
 
         } catch (IOException e) {

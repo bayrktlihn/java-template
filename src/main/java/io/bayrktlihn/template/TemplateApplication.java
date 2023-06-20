@@ -8,6 +8,13 @@ public class TemplateApplication {
     public static void main(String[] args) {
         ApplicationProperties applicationProperties = ApplicationProperties.get();
 
-        System.out.println(applicationProperties);
+        Properties values = applicationProperties.getValues();
+
+        for (String stringPropertyName : values.stringPropertyNames()) {
+            Object o = values.get(stringPropertyName);
+            System.out.println(stringPropertyName + " "+o);
+        }
+
+
     }
 }
