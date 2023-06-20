@@ -22,7 +22,7 @@ public class ApplicationProperties {
     }
 
     private Properties loadProperties() {
-        final Properties properties = new Properties();
+        Properties properties = new Properties();
 
         String profile = System.getProperty(PROFILE_KEY);
 
