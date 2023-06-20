@@ -1,10 +1,12 @@
 package io.bayrktlihn.template.util;
 
+import io.bayrktlihn.template.model.DateFromToObject;
 import io.bayrktlihn.template.model.DayMonth;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
+import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
@@ -25,6 +27,24 @@ class DatesTest {
         Date dateAfter12Hours = Date.from(date.toInstant().plus(12, ChronoUnit.HOURS));
 
         Assertions.assertTrue(Dates.equalsWithoutTime(date, dateAfter12Hours));
+    }
+
+    @Test
+    void create(){
+        Instant now = Instant.now();
+        Instant addOneHours = now.plus(1, ChronoUnit.HOURS);
+
+        Date from = Date.from(now);
+        Date to = Date.from(addOneHours);
+
+        List<DateFromToObject<String>> result = Dates.createPeriodItems(from, to, 15, ChronoUnit.MINUTES, 15, ChronoUnit.MINUTES, (date, date2) -> new DateFromToObject<>(date, date2, "alihan"));
+
+        for (DateFromToObject<String> stringDateFromToObject : result) {
+            System.out.println(Dates.toString(stringDateFromToObject.getFrom(), "dd.MM.yyyy HH.mm.ss"));
+            System.out.println(Dates.toString(stringDateFromToObject.getTo(), "dd.MM.yyyy HH.mm.ss"));
+            System.out.println(stringDateFromToObject.getObject());
+            System.out.println();
+        }
     }
 
     @Test

@@ -1,0 +1,7 @@
+
+W
+java:S1118	":Add a private constructor to hide the implicit public one.(νΪΉ8†ΜµΔ1
+`
+java:S3064">Fully initialize "passedSystemProperties" before assigning it.(§ίζχωÿÿÿÿ8§η¶Δ1
+[
+java:S2168"9Remove this dangerous instance of double-checked locking.(χ¦θόÿÿÿÿ8§η¶Δ1

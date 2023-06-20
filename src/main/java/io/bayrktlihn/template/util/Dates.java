@@ -6,9 +6,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.function.BiFunction;
 
 public class Dates {
 
@@ -38,6 +41,30 @@ public class Dates {
         calendar.set(Calendar.MILLISECOND, 999);
 
         return calendar.getTime();
+    }
+
+    public static <T> List<T> createPeriodItems(Date from, Date to, long periodValue, TemporalUnit periodUnit, long delayValue, TemporalUnit delayUnit, BiFunction<Date, Date, T> toBeGenerateObject) {
+        List<T> result = new ArrayList<>();
+
+        Instant periodEndInstant = from.toInstant().plus(periodValue, periodUnit);
+
+        Date periodStart = from;
+        Date periodEnd = Date.from(periodEndInstant);
+
+        while (periodEnd.compareTo(to) <= 0) {
+            T t = toBeGenerateObject.apply(periodStart, periodEnd);
+            result.add(t);
+
+            Instant periodStartInstant = periodEnd.toInstant().plus(delayValue, delayUnit);
+            periodEndInstant = periodStartInstant.plus(periodValue, periodUnit);
+
+            periodStart = Date.from(periodStartInstant);
+            periodEnd = Date.from(periodEndInstant);
+        }
+
+        return result;
+
+
     }
 
     public static Date createDate(int year, int month, int dayOfMonth) {
