@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class ApplicationProperties {
 
-    private static ApplicationProperties INSTANCE;
+    private static ApplicationProperties instance;
 
     private static final String PROFILE_KEY = "bayrktlihn.profile";
 
@@ -67,14 +67,14 @@ public class ApplicationProperties {
 
 
     public static ApplicationProperties get() {
-        if (INSTANCE == null) {
+        if (instance == null) {
             synchronized (ApplicationProperties.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = new ApplicationProperties();
+                if (instance == null) {
+                    instance = new ApplicationProperties();
                 }
             }
         }
-        return INSTANCE;
+        return instance;
     }
 
 

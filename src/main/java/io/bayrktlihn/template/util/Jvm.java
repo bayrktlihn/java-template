@@ -8,23 +8,32 @@ import java.util.Map;
 
 public class Jvm {
 
+    private static Map<String, String> passedSystemProperties;
+
     public static Map<String, String> getPassedSystemProperties() {
-        RuntimeMXBean runtimeMxBean = ManagementFactory.getRuntimeMXBean();
+        if (passedSystemProperties == null) {
+            synchronized (Jvm.class) {
+                if (passedSystemProperties == null) {
+                    RuntimeMXBean runtimeMxBean = ManagementFactory.getRuntimeMXBean();
 
-        List<String> jvmArgs = runtimeMxBean.getInputArguments();
+                    List<String> jvmArgs = runtimeMxBean.getInputArguments();
 
-        Map<String, String> passedSystemProperties = new HashMap<>();
+                    passedSystemProperties = new HashMap<>();
 
-        for (String arg : jvmArgs) {
-            if (arg.startsWith("-D")) {
-                String[] parts = arg.substring(2).split("=", 2);
-                if (parts.length == 2) {
-                    String key = parts[0];
-                    String value = parts[1];
-                    passedSystemProperties.put(key, value);
+                    for (String arg : jvmArgs) {
+                        if (arg.startsWith("-D")) {
+                            String[] parts = arg.substring(2).split("=", 2);
+                            if (parts.length == 2) {
+                                String key = parts[0];
+                                String value = parts[1];
+                                passedSystemProperties.put(key, value);
+                            }
+                        }
+                    }
                 }
             }
         }
+
         return passedSystemProperties;
     }
 
