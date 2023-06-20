@@ -9,14 +9,13 @@ import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.Base64;
-import java.util.Properties;
 
 class RsaTest {
     @Test
     void decrypt() {
-        Properties properties = ApplicationProperties.getProperties();
-        String base64EncodedPrivateKey = (String) properties.get("rsa.private_key");
-        String base64EncodedPublicKey = (String) properties.get("rsa.public_key");
+        ApplicationProperties applicationProperties = ApplicationProperties.get();
+        String base64EncodedPrivateKey = applicationProperties.getValue("rsa.private_key", String.class);
+        String base64EncodedPublicKey = applicationProperties.getValue("rsa.public_key", String.class);
         Encryption rsa = Encryption.createRsa(base64EncodedPrivateKey, base64EncodedPublicKey);
 
         String toBeEncrypted = "$ğüşiöç";

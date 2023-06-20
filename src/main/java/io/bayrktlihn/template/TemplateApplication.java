@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class TemplateApplication {
     public static void main(String[] args) {
-        Properties applicationProperties = ApplicationProperties.getProperties();
+        ApplicationProperties applicationProperties = ApplicationProperties.get();
 
         System.out.println(applicationProperties);
     }

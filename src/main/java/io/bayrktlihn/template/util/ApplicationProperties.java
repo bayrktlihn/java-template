@@ -7,43 +7,63 @@ import java.util.Properties;
 
 public class ApplicationProperties {
 
-	private static final Properties PROPERTIES;
-	private static final String PROFILE_KEY = "bayrktlihn.profile";
+    private static ApplicationProperties INSTANCE;
 
-	static {
-		PROPERTIES = new Properties();
+    private static final String PROFILE_KEY = "bayrktlihn.profile";
 
-		String profile = System.getProperty(PROFILE_KEY);
+    private final Properties properties;
 
-		Path path = PathUtil.getPathFromClasspath("application.properties");
+    private ApplicationProperties() {
+        properties = loadProperties();
+    }
 
-		try {
-			if (path != null) {
-				PROPERTIES.load(Files.newInputStream(path));
-				if (profile == null) {
-					profile = PROPERTIES.getProperty(PROFILE_KEY);
-				}
-			}
+    public <T> T getValue(String key, Class<T> clazz) {
+        return (T) properties.getProperty(key);
+    }
 
-			if (profile != null) {
-				Path profilePath = PathUtil.getPathFromClasspath("application-" + profile + ".properties");
-				if (profilePath != null) {
-					PROPERTIES.load(Files.newInputStream(profilePath));
-				}
-			}
+    private Properties loadProperties() {
+        final Properties properties = new Properties();
 
-			if (profile != null) {
-				PROPERTIES.put(PROFILE_KEY, profile);
-			}
+        String profile = System.getProperty(PROFILE_KEY);
 
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
+        Path path = PathUtil.getPathFromClasspath("application.properties");
 
-	}
+        try {
+            if (path != null) {
+                properties.load(Files.newInputStream(path));
+                if (profile == null) {
+                    profile = properties.getProperty(PROFILE_KEY);
+                }
+            }
 
-	public static Properties getProperties() {
-		return PROPERTIES;
-	}
+            if (profile != null) {
+                Path profilePath = PathUtil.getPathFromClasspath("application-" + profile + ".properties");
+                if (profilePath != null) {
+                    properties.load(Files.newInputStream(profilePath));
+                }
+            }
+
+            if (profile != null) {
+                properties.put(PROFILE_KEY, profile);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return properties;
+    }
+
+
+    public static ApplicationProperties get() {
+        if (INSTANCE == null) {
+            synchronized (ApplicationProperties.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new ApplicationProperties();
+                }
+            }
+        }
+        return INSTANCE;
+    }
+
 
 }

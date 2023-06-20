@@ -12,8 +12,8 @@ class AesTest {
     @Test
     void decrypt() {
 
-        Properties properties = ApplicationProperties.getProperties();
-        String aesKey = properties.getProperty("aes.key");
+        ApplicationProperties applicationProperties = ApplicationProperties.get();
+        String aesKey = applicationProperties.getValue("aes.key", String.class);
         Encryption aes = Encryption.createAes(aesKey);
 
         String toBeEncryptedPlainText = "üğüğüşlşiişşiçöçöçöç.";

@@ -1,8 +1,6 @@
 
 b
 2src/main/java/io/bayrktlihn/template/util/XML.java,8\6\863ed6e7d66916f121fd82901b24bf4d6e8cc784
-k
-;src/test/java/io/bayrktlihn/template/util/FileUtilTest.java,b\d\bdaeeb22911e0ee09d262a58f486760d6e14b78d
 g
 7src/main/java/io/bayrktlihn/template/util/FileUtil.java,8\7\87a290affba3c579380eeb61ccedaa251a77de74
 c
@@ -12,21 +10,11 @@ h
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-t
-Dsrc/main/java/io/bayrktlihn/template/util/ApplicationProperties.java,8\c\8cd9de5934877a1268ab5c0da080b6af66f30ba3
-v
-Fsrc/test/java/io/bayrktlihn/template/util/encryption/impl/AesTest.java,9\9\99f91f4218748347f64643c19c63dedb3cdc75dc
-m
-=src/main/java/io/bayrktlihn/template/TemplateApplication.java,6\1\61a0727b713d582321e3fada9839e5308c8b29fd
 r
 Bsrc/main/java/io/bayrktlihn/template/util/encryption/impl/Rsa.java,1\6\16124e0d1de50e14146a55e4f16c3a893b8bc3d9
 r
 Bsrc/main/java/io/bayrktlihn/template/util/encryption/impl/Aes.java,5\0\505f9605c673953236c21efa3a1136011b7edb6b
 t
 Dsrc/main/java/io/bayrktlihn/template/util/encryption/Encryption.java,c\f\cfadff57a0757193f88105393b52cc002525ed07
-v
-Fsrc/test/java/io/bayrktlihn/template/util/encryption/impl/RsaTest.java,3\e\3e450fe8dee2f11dbf210d9b14850f41fed98a3d
-g
-7src/test/java/io/bayrktlihn/template/util/JSONTest.java,a\d\adbfc53f2cdbd72722324730e8b5a6ac8da7a863
 g
 7src/main/java/io/bayrktlihn/template/util/PathUtil.java,0\6\065075ac22272385f801eef793c20ab7cb1cd292
