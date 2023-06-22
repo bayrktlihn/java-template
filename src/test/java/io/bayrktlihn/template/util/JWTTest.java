@@ -49,7 +49,7 @@ class JWTTest {
 
         SecretKey secretKey = Keys.hmacShaKeyFor(jwtKey);
 
-        String jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGloYW4gYmF5cmFrdGFyYSIsImlhdCI6MTY4NzEyMDA3NywiYXVkIjoiYmF5cmt0bGlobiIsImV4cCI6MTY4NzEyMDk3N30.Xn6fJemqwG9EyRBE-ahuMH2zVsk13vlwPmS9fIUEgMo";
+        String jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGloYW4gYmF5cmFrdGFyIiwiaWF0IjoxNjg3NDUyMzk3LCJhdWQiOiJiYXlya3RsaWhuIiwiZXhwIjoxNjg3NDUzMjk3fQ.UnfZmNgWVokAcZQsswLudl3e3bzdhtM1m_CVZHeWgbU";
 
 
         try {

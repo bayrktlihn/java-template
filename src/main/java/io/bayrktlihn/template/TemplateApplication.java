@@ -12,7 +12,7 @@ public class TemplateApplication {
 
         for (String stringPropertyName : values.stringPropertyNames()) {
             Object o = values.get(stringPropertyName);
-            System.out.println(stringPropertyName + " "+o);
+            System.out.println(stringPropertyName + " " + o);
         }
 
 
