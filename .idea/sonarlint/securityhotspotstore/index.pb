@@ -52,16 +52,10 @@ s
 Csrc/test/java/io/bayrktlihn/template/util/hashing/impl/Md5Test.java,5\6\56f588d9e63c2a58ff8cf699766dfd587db586a9
 v
 Fsrc/test/java/io/bayrktlihn/template/util/hashing/impl/Sha256Test.java,7\2\722a5f299b6f69518bd3388248065f1cdafc531a
-u
-Esrc/test/java/io/bayrktlihn/template/config/JpaConfigurationTest.java,a\e\ae9ce1bcb750e2ac4b44e3d05731fb078cc5c3ae
 v
 Fsrc/test/java/io/bayrktlihn/template/util/encryption/impl/AesTest.java,9\9\99f91f4218748347f64643c19c63dedb3cdc75dc
-]
--.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 f
 6src/test/java/io/bayrktlihn/template/util/JWTTest.java,6\0\60e2e20eeb7c80a26b03bcb4e531b069b31947a8
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 v
 Fsrc/test/java/io/bayrktlihn/template/util/encryption/impl/RsaTest.java,3\e\3e450fe8dee2f11dbf210d9b14850f41fed98a3d
 m
@@ -76,3 +70,7 @@ h
 8src/test/java/io/bayrktlihn/template/util/DatesTest.java,2\b\2b9fc5aa8e1a2a023e56be31a10d9efcf97704e1
 d
 4src/main/java/io/bayrktlihn/template/util/Dates.java,b\4\b48f6fac3cee8f82a64edcd71506ead5a4eb234c
+p
+@src/main/java/io/bayrktlihn/template/model/DateFromToObject.java,6\e\6e66a1861741b9d096e438ae1dc5d7f1d45b6f3b
+u
+Esrc/test/java/io/bayrktlihn/template/config/JpaConfigurationTest.java,a\e\ae9ce1bcb750e2ac4b44e3d05731fb078cc5c3ae

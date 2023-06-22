@@ -35,7 +35,7 @@ public abstract class BaseEntity {
 	@XmlElement(name = "Id")
 	private long id;
 
-	@Column(name = "created_date")
+	@Column(name = "created_date", columnDefinition = "timestamp default localtimestamp(6)")
 	@Temporal(TemporalType.TIMESTAMP)
 	@XmlElement(name = "CreatedDate")
 	private Date createdDate;
@@ -45,7 +45,7 @@ public abstract class BaseEntity {
 	@XmlElement(name = "UpdatedDate")
 	private Date updatedDate;
 
-	@Column(name = "active")
+	@Column(name = "active", columnDefinition = "bool default true")
 	@XmlElement(name = "Active")
 	private boolean active;
 
@@ -61,7 +61,7 @@ public abstract class BaseEntity {
 	}
 
 	@PreUpdate
-	private void preUpdate() {
+	private void preUpdate()  {
 		updatedDate = new Date();
 	}
 }
