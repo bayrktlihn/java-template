@@ -8,8 +8,7 @@ import java.nio.file.Files;
 public class FileUtil {
 
     public static String readAll(File file) {
-        try {
-            BufferedReader bufferedReader = Files.newBufferedReader(file.toPath());
+        try(BufferedReader bufferedReader = Files.newBufferedReader(file.toPath())) {
 
             StringBuffer stringBuffer = new StringBuffer();
 
