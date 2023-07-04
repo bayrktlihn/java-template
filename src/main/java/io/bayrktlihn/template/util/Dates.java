@@ -19,6 +19,14 @@ public class Dates {
         throw new InstantiationException();
     }
 
+    public static Date starOfDayOfToday(){
+        return startOfDay(new Date());
+    }
+
+    public static Date endOfDayOfToday(){
+        return endOfDay(new Date());
+    }
+
     public static Date startOfDay(Date date) {
         Calendar calendar = Calendar.getInstance();
 
