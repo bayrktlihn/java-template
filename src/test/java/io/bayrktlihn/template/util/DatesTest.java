@@ -1,7 +1,8 @@
 package io.bayrktlihn.template.util;
 
-import io.bayrktlihn.template.model.DateFromToObject;
-import io.bayrktlihn.template.model.DayMonth;
+import io.bayrktlihn.template.util.date.model.DateFromToObject;
+import io.bayrktlihn.template.util.date.model.DayMonth;
+import io.bayrktlihn.template.util.date.Dates;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
-package io.bayrktlihn.template.util;
+package io.bayrktlihn.template.util.date;
 
-import io.bayrktlihn.template.model.DayMonth;
+import io.bayrktlihn.template.util.date.model.DayMonth;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

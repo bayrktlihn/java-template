@@ -10,9 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import io.bayrktlihn.template.util.Dates;
-import io.bayrktlihn.template.util.JasperReports;
-import io.bayrktlihn.template.util.PathUtil;
+import io.bayrktlihn.template.util.date.Dates;
 import org.junit.jupiter.api.Test;
 
 import io.bayrktlihn.template.entity.Person;

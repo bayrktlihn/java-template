@@ -1,8 +1,8 @@
 package io.bayrktlihn.template.client;
 
 import io.bayrktlihn.template.client.tcmb.TCMBClient;
-import io.bayrktlihn.template.dto.tcmb.CurrencyDto;
-import io.bayrktlihn.template.dto.tcmb.TarihDateDto;
+import io.bayrktlihn.template.client.tcmb.dto.CurrencyDto;
+import io.bayrktlihn.template.client.tcmb.dto.TarihDateDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
 package io.bayrktlihn.template.client.tcmb;
 
-import io.bayrktlihn.template.dto.tcmb.TarihDateDto;
+import io.bayrktlihn.template.client.tcmb.dto.TarihDateDto;
 import io.bayrktlihn.template.util.XML;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;

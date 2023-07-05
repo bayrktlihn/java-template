@@ -1,5 +1,7 @@
 package io.bayrktlihn.template.dto.tcmb;
 
+import io.bayrktlihn.template.client.tcmb.dto.CurrencyDto;
+import io.bayrktlihn.template.client.tcmb.dto.TarihDateDto;
 import io.bayrktlihn.template.util.XML;
 import org.junit.jupiter.api.Test;
 

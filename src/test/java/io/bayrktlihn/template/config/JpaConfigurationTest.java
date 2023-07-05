@@ -2,7 +2,7 @@ package io.bayrktlihn.template.config;
 
 import io.bayrktlihn.template.entity.Person;
 import io.bayrktlihn.template.enums.Gender;
-import io.bayrktlihn.template.util.Dates;
+import io.bayrktlihn.template.util.date.Dates;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;

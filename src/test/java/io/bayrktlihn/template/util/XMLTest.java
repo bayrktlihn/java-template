@@ -1,7 +1,6 @@
 package io.bayrktlihn.template.util;
 
-import io.bayrktlihn.template.util.Dates;
-import io.bayrktlihn.template.util.XML;
+import io.bayrktlihn.template.util.date.Dates;
 import org.junit.jupiter.api.Test;
 
 import io.bayrktlihn.template.entity.Person;

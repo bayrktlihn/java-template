@@ -1,4 +1,4 @@
-package io.bayrktlihn.template.dto.tcmb;
+package io.bayrktlihn.template.client.tcmb.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

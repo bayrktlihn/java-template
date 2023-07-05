@@ -1,12 +1,10 @@
 package io.bayrktlihn.template.util;
 
 import java.nio.file.Path;
-import java.time.LocalDate;
 import java.util.List;
 
-import io.bayrktlihn.template.model.DayMonth;
-import io.bayrktlihn.template.util.Dates;
-import io.bayrktlihn.template.util.JSON;
+import io.bayrktlihn.template.util.date.model.DayMonth;
+import io.bayrktlihn.template.util.date.Dates;
 import org.junit.jupiter.api.Test;
 
 import io.bayrktlihn.template.entity.Person;

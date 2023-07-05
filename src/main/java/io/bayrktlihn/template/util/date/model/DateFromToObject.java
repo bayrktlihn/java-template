@@ -1,4 +1,4 @@
-package io.bayrktlihn.template.model;
+package io.bayrktlihn.template.util.date.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
