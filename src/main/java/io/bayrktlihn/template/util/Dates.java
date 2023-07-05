@@ -27,6 +27,30 @@ public class Dates {
         return endOfDay(new Date());
     }
 
+    public static Date startDayOfYear(int year){
+        Date startOfDayOfToday = starOfDayOfToday();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(startOfDayOfToday);
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, Calendar.JANUARY);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+
+        return calendar.getTime();
+    }
+
+    public static Date endDayOfYear(int year){
+        Date endOfDayOfToday = endOfDayOfToday();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(endOfDayOfToday);
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, Calendar.DECEMBER);
+        calendar.set(Calendar.DAY_OF_MONTH, 31);
+
+        return calendar.getTime();
+    }
+
     public static Date startOfDay(Date date) {
         Calendar calendar = Calendar.getInstance();
 
