@@ -21,6 +21,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Getter
 @Setter
@@ -32,6 +33,7 @@ import lombok.ToString;
 @Table(name = "person")
 @XmlRootElement(name = "Person")
 @XmlAccessorType(XmlAccessType.FIELD)
+@DynamicUpdate
 public class Person extends BaseEntity {
 
 	@Column(name = "first_name")

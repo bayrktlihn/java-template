@@ -28,8 +28,6 @@ w
 G.idea/sonarlint/issuestore/c/f/cfadff57a0757193f88105393b52cc002525ed07,7\7\77c130386d987d877efbe2dceafe65a99822a30b
 o
 ?src/main/java/io/bayrktlihn/template/util/hashing/impl/Md5.java,a\8\a80d4e474490509c8489facc80cb176af8779e9f
-n
->src/main/java/io/bayrktlihn/template/util/hashing/Hashing.java,5\7\57637ffac86f2576c6401cc8accd67af2cc06ad3
 r
 Bsrc/main/java/io/bayrktlihn/template/util/hashing/impl/Sha256.java,6\7\67193cbe4526bf24dd4181ddef482703dd3c68e1
 h
@@ -42,8 +40,6 @@ o
 ?src/test/java/io/bayrktlihn/template/util/NumberFormatTest.java,a\a\aa504d787310b22a6c0f5be08e262ae174f5a4d5
 f
 6src/test/java/io/bayrktlihn/template/util/XMLTest.java,e\a\ea874bc83f67833253e2de0f0bb160607d2c2433
-s
-Csrc/test/java/io/bayrktlihn/template/util/hashing/impl/Md5Test.java,5\6\56f588d9e63c2a58ff8cf699766dfd587db586a9
 v
 Fsrc/test/java/io/bayrktlihn/template/util/hashing/impl/Sha256Test.java,7\2\722a5f299b6f69518bd3388248065f1cdafc531a
 v
@@ -56,19 +52,11 @@ b
 2src/main/java/io/bayrktlihn/template/util/Jvm.java,3\f\3fd3fac1fbe5473e9ec4f0e7999562e2bc8b58e0
 e
 5src/main/java/io/bayrktlihn/template/entity/Role.java,e\4\e4e443a26b0fee50ec031eb71fce3dbfeaa65ff6
-e
-5src/main/java/io/bayrktlihn/template/entity/User.java,3\5\3569c06261801794b31f5f337b99e0b2756f8f9f
 k
 ;src/test/java/io/bayrktlihn/template/util/SecurityTest.java,9\5\95b82ef1517d9d389654a33d04cfc11485f4d7f7
-k
-;src/main/java/io/bayrktlihn/template/entity/BaseEntity.java,a\0\a074950a6a26c501a489146c6ed77cd0334b0594
-j
-:src/main/java/io/bayrktlihn/template/entity/Authority.java,e\3\e31a630f66afd78eddda1ac1b6b698b0dac9b62a
 q
 Asrc/main/java/io/bayrktlihn/template/config/JpaConfiguration.java,e\7\e73ba5ba90d79eb05e5ec4b89ac87c4d806de0f7
 p
 @src/test/java/io/bayrktlihn/template/util/JasperReportsTest.java,8\0\80e137d374f5f29d5ff195c63cb88c6c87aa2b44
-t
-Dsrc/main/java/io/bayrktlihn/template/util/ApplicationProperties.java,8\c\8cd9de5934877a1268ab5c0da080b6af66f30ba3
 l
 <src/main/java/io/bayrktlihn/template/util/JasperReports.java,d\b\db47e18defe8cc1c134fd2a30495fc29fc49eb49
