@@ -1,13 +1,14 @@
 package io.bayrktlihn.template.util;
 
+import io.bayrktlihn.template.util.date.Dates;
 import io.bayrktlihn.template.util.date.model.DateFromToObject;
 import io.bayrktlihn.template.util.date.model.DayMonth;
-import io.bayrktlihn.template.util.date.Dates;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
 import java.time.Instant;
+import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,15 +24,53 @@ class DatesTest {
     }
 
     @Test
-    void equalsWithoutTime(){
-        Date date = Dates.createStarOfDayDate(1995, 10, 4);
+    void equalsWithoutTime() {
+        Date date = Dates.createStartOfDay(1995, 10, 4);
         Date dateAfter12Hours = Date.from(date.toInstant().plus(12, ChronoUnit.HOURS));
 
         Assertions.assertTrue(Dates.equalsWithoutTime(date, dateAfter12Hours));
     }
 
     @Test
-    void create(){
+    void period() {
+        Date birthDate = Dates.createDate(1995, 7, 14);
+        Date endDate = Dates.createStartOfDay(2000, 8, 13);
+
+        Period period = Dates.period(birthDate, endDate);
+
+        Assertions.assertEquals(5, period.getYears());
+        Assertions.assertEquals(0, period.getMonths());
+        Assertions.assertEquals(30, period.getDays());
+    }
+
+    @Test
+    void numberOfDaysInMonth(){
+        int countOfDayInMonth = Dates.numberOfDaysInMonth(1996, 2);
+
+        Assertions.assertEquals(29, countOfDayInMonth);
+    }
+
+    @Test
+    void startOfFirstDayOfMonth(){
+        Date date = Dates.startOfFirstDayOfMonth(1995, 10);
+
+        Assertions.assertEquals("01.10.1995 00.00", Dates.toString(date, "dd.MM.YYYY HH.mm"));
+    }
+
+    @Test
+    void numberOfDaysInYear(){
+        int countOfDayInYear = Dates.numberOfDaysInYear(1900);
+
+        Assertions.assertEquals(365, countOfDayInYear);
+    }
+
+    @Test
+    void isLeapYear() {
+        Assertions.assertFalse(Dates.isLeapYear(1900));
+    }
+
+    @Test
+    void create() {
         Instant now = Instant.now();
         Instant addOneHours = now.plus(1, ChronoUnit.HOURS);
 

@@ -5,6 +5,9 @@ import io.bayrktlihn.template.util.date.model.DayMonth;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
@@ -15,23 +18,32 @@ import java.util.function.BiFunction;
 
 public class Dates {
 
+    public static final int COUNT_OF_DAY_IN_NORMAL_YEAR = 365;
+    public static final int COUNT_OF_DAY_IN_LEAP_YEAR = COUNT_OF_DAY_IN_NORMAL_YEAR + 1;
+
     private Dates() throws InstantiationException {
         throw new InstantiationException();
     }
 
-    public static Date starOfDayOfToday(){
-        return startOfDay(new Date());
+    public static Date now(){
+        return new Date();
     }
 
-    public static Date endOfDayOfToday(){
-        return endOfDay(new Date());
+    public static Date startOfToday() {
+        Date now = now();
+        return startOfDay(now);
     }
 
-    public static Date startDayOfYear(int year){
-        Date startOfDayOfToday = starOfDayOfToday();
+    public static Date endOfToday() {
+        Date now = now();
+        return endOfDay(now);
+    }
+
+    public static Date startOfFirstDayOfYear(int year) {
+        Date startOfToday = startOfToday();
 
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(startOfDayOfToday);
+        calendar.setTime(startOfToday);
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, Calendar.JANUARY);
         calendar.set(Calendar.DAY_OF_MONTH, 1);
@@ -39,11 +51,11 @@ public class Dates {
         return calendar.getTime();
     }
 
-    public static Date endDayOfYear(int year){
-        Date endOfDayOfToday = endOfDayOfToday();
+    public static Date endOfLastDayOfYear(int year) {
+        Date endOfToday = endOfToday();
 
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(endOfDayOfToday);
+        calendar.setTime(endOfToday);
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, Calendar.DECEMBER);
         calendar.set(Calendar.DAY_OF_MONTH, 31);
@@ -124,6 +136,41 @@ public class Dates {
 
     }
 
+    public static Period period(Date from, Date to) {
+        Instant fromInstant = from.toInstant();
+        Instant toInstant = to.toInstant();
+
+        LocalDateTime fromLocalDateTime = LocalDateTime.ofInstant(fromInstant, ZoneId.systemDefault());
+        LocalDateTime toLocalDateTime = LocalDateTime.ofInstant(toInstant, ZoneId.systemDefault());
+
+        return Period.between(fromLocalDateTime.toLocalDate(), toLocalDateTime.toLocalDate());
+    }
+
+    public static int numberOfDaysInMonth(int year, int month) {
+        Date date = startOfFirstDayOfMonth(year, month);
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.setTime(date);
+
+        return calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+    }
+
+    public static int numberOfDaysInYear(int year) {
+
+        if (isLeapYear(year)) {
+            return COUNT_OF_DAY_IN_LEAP_YEAR;
+        }
+
+        return COUNT_OF_DAY_IN_NORMAL_YEAR;
+
+    }
+
+    public static Date startOfFirstDayOfMonth(int year, int month) {
+        return createStartOfDay(year, month, 1);
+    }
+
+
     public static Date currentDateOrNextWorkDate(Date date, boolean isSaturdayIsHoliday, boolean isSundayIsHoliday, List<DayMonth> holidaysInEveryYear) {
         if (isHoliday(date, isSaturdayIsHoliday, isSundayIsHoliday, holidaysInEveryYear)) {
             Instant addedOneDay = date.toInstant().plus(1, ChronoUnit.DAYS);
@@ -133,12 +180,12 @@ public class Dates {
     }
 
 
-    public static Date createStarOfDayDate(int year, int month, int dayOfMonth) {
+    public static Date createStartOfDay(int year, int month, int dayOfMonth) {
         Date date = createDate(year, month, dayOfMonth);
         return startOfDay(date);
     }
 
-    public static Date createEndOfDayDate(int year, int month, int dayOfMonth) {
+    public static Date createEndOfDay(int year, int month, int dayOfMonth) {
         Date date = createDate(year, month, dayOfMonth);
         return endOfDay(date);
     }
@@ -191,6 +238,10 @@ public class Dates {
         int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
 
         return holidaysInYear.stream().anyMatch(holidaysInYearItem -> holidaysInYearItem.getDayOfMonth() == dayOfMonth && holidaysInYearItem.getMonth() == month);
+    }
+
+    public static boolean isLeapYear(int year) {
+        return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
     }
 
 }

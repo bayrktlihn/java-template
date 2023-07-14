@@ -24,7 +24,7 @@ class JpaConfigurationTest {
         Person person = new Person();
         person.setFirstName("alihan");
         person.setLastName("bayraktar");
-        person.setBirthDate(Dates.createStarOfDayDate(1995, 10, 4));
+        person.setBirthDate(Dates.createStartOfDay(1995, 10, 4));
         person.setGender(Gender.MAN);
 
         entityManager.persist(person);

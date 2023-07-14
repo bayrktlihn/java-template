@@ -3,8 +3,6 @@ g
 7src/main/java/io/bayrktlihn/template/util/FileUtil.java,8\7\87a290affba3c579380eeb61ccedaa251a77de74
 c
 3src/main/java/io/bayrktlihn/template/util/JSON.java,9\f\9fd73e3f5d3f1857124a9c8186dba344b9d8106b
-h
-8src/main/java/io/bayrktlihn/template/model/DayMonth.java,2\3\2389a528ddee69792856f3c9ff815b5980ca62ce
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -56,10 +54,6 @@ f
 6src/test/java/io/bayrktlihn/template/util/JvmTest.java,f\1\f1c637bf0023482b18899f40c2dec17745b1e36f
 b
 2src/main/java/io/bayrktlihn/template/util/Jvm.java,3\f\3fd3fac1fbe5473e9ec4f0e7999562e2bc8b58e0
-h
-8src/test/java/io/bayrktlihn/template/util/DatesTest.java,2\b\2b9fc5aa8e1a2a023e56be31a10d9efcf97704e1
-u
-Esrc/test/java/io/bayrktlihn/template/config/JpaConfigurationTest.java,a\e\ae9ce1bcb750e2ac4b44e3d05731fb078cc5c3ae
 k
 ;src/test/java/io/bayrktlihn/template/util/SecurityTest.java,9\5\95b82ef1517d9d389654a33d04cfc11485f4d7f7
 e
@@ -74,8 +68,6 @@ q
 Asrc/main/java/io/bayrktlihn/template/config/JpaConfiguration.java,e\7\e73ba5ba90d79eb05e5ec4b89ac87c4d806de0f7
 p
 @src/test/java/io/bayrktlihn/template/util/JasperReportsTest.java,8\0\80e137d374f5f29d5ff195c63cb88c6c87aa2b44
-p
-@src/main/java/io/bayrktlihn/template/model/DateFromToObject.java,6\e\6e66a1861741b9d096e438ae1dc5d7f1d45b6f3b
 t
 Dsrc/main/java/io/bayrktlihn/template/util/ApplicationProperties.java,8\c\8cd9de5934877a1268ab5c0da080b6af66f30ba3
 l
