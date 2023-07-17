@@ -25,7 +25,7 @@ public class LocalDates {
     }
 
     public static LocalDate lastDayOfYear(int year) {
-        return LocalDate.of(year, 12, 30);
+        return LocalDate.of(year, 12, 31);
     }
 
     public static LocalDate createLocalDate(int year, int month, int dayOfMonth) {
