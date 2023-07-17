@@ -10,10 +10,7 @@ import java.time.Period;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.function.BiFunction;
 
 public class Dates {
@@ -25,7 +22,7 @@ public class Dates {
         throw new InstantiationException();
     }
 
-    public static Date now(){
+    public static Date now() {
         return new Date();
     }
 
@@ -170,6 +167,40 @@ public class Dates {
         return createStartOfDay(year, month, 1);
     }
 
+    public static Date endOfLastDayOfMonth(int year, int month) {
+        return createStartOfDay(year, month, 1);
+    }
+
+    public static int maximumDayOfMonth(int year, int month) {
+        if(month == 11){
+            return isLeapYear(year) ? 29 : 28;
+        }
+
+
+        List<Integer> thirtyOneDaysMonths = thirtyOneDaysMonths();
+
+        if (thirtyOneDaysMonths.stream().anyMatch(item -> item.equals(month))) {
+            return 31;
+        }
+
+        List<Integer> thirtyDaysMonths = thirtyDaysMonths();
+
+        if (thirtyDaysMonths.stream().anyMatch(item -> item.equals(month))) {
+            return 31;
+        }
+
+        throw new RuntimeException();
+
+    }
+
+    private static List<Integer> thirtyOneDaysMonths() {
+        return Arrays.asList(1, 3, 5, 7, 8, 10, 12);
+    }
+
+    private static List<Integer> thirtyDaysMonths() {
+        return Arrays.asList(2, 4, 6, 9);
+    }
+
 
     public static Date currentDateOrNextWorkDate(Date date, boolean isSaturdayIsHoliday, boolean isSundayIsHoliday, List<DayMonth> holidaysInEveryYear) {
         if (isHoliday(date, isSaturdayIsHoliday, isSundayIsHoliday, holidaysInEveryYear)) {
@@ -216,10 +247,7 @@ public class Dates {
 
         int c1DayOfMonth = c1.get(Calendar.DAY_OF_MONTH);
         int c2DayOfMonth = c2.get(Calendar.DAY_OF_MONTH);
-        if (c1DayOfMonth != c2DayOfMonth) {
-            return false;
-        }
-        return true;
+        return c1DayOfMonth == c2DayOfMonth;
     }
 
     private static boolean isHoliday(Date date, boolean isSaturdayIsHoliday, boolean isSundayIsHoliday, List<DayMonth> holidaysInYear) {
