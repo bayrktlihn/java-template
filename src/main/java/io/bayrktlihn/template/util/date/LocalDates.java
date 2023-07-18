@@ -38,11 +38,11 @@ public class LocalDates {
         return Year.MAX_VALUE;
     }
 
-    public static boolean equalOrIsAfter(LocalDate localDate, LocalDate otherLocalDate){
+    public static boolean afterOrIsEqual(LocalDate localDate, LocalDate otherLocalDate){
         return localDate.isEqual(otherLocalDate) || localDate.isAfter(otherLocalDate);
     }
 
-    public static boolean equalOrIsBefore(LocalDate localDate, LocalDate otherLocalDate){
+    public static boolean beforeOrIsEqual(LocalDate localDate, LocalDate otherLocalDate){
         return localDate.isEqual(otherLocalDate) || localDate.isBefore(otherLocalDate);
     }
 

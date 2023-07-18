@@ -22,7 +22,7 @@ class MyTests {
 
     private static void simulateInterestRate() {
         LocalDate start = LocalDates.create(2006, 7, 13);
-        LocalDate today = LocalDates.create(2009, 12, 12);
+        LocalDate today = LocalDates.create(2010, 10, 19);
 
         InterestRate i1 = InterestRate.createWithMonthlyInterestRate(new BigDecimal("2.5"));
         InterestRate i2 = InterestRate.createWithMonthlyInterestRate(new BigDecimal("2.5"));
@@ -33,7 +33,7 @@ class MyTests {
         fromToList.add(new LocalDateFromToObject<>(LocalDateFromTo.createWithTo(LocalDates.create(2006, 4, 20)), i1));
         fromToList.add(new LocalDateFromToObject<>(LocalDateFromTo.create(LocalDates.create(2006, 4, 21), LocalDates.create(2009, 11, 18)), i2));
         fromToList.add(new LocalDateFromToObject<>(LocalDateFromTo.create(LocalDates.create(2009, 11, 19), LocalDates.create(2010, 10, 18)), i3));
-        fromToList.add(new LocalDateFromToObject<>(LocalDateFromTo.createWithFrom(LocalDates.create(2010, 10, 18)), i4));
+        fromToList.add(new LocalDateFromToObject<>(LocalDateFromTo.createWithFrom(LocalDates.create(2010, 10, 19)), i4));
 
 
         List<LocalDateFromToObject<InterestRate>> collect = fromToList.stream().filter(item -> {
@@ -45,11 +45,12 @@ class MyTests {
                 return true;
             }
 
-            if (from.isAfter(start) && LocalDates.equalOrIsBefore(to, today)) {
+            if (from.isAfter(start) && LocalDates.beforeOrIsEqual(to, today)) {
                 return true;
             }
 
-            if (from.isBefore(today) && (to.isAfter(today))) {
+
+            if (LocalDates.beforeOrIsEqual(from, today) && (to.isAfter(today))) {
                 return true;
             }
             return false;
