@@ -22,7 +22,7 @@ class MyTests {
     }
 
     private static void simulateInterestRate() {
-        LocalDate start = LocalDates.create(2009, 12, 11);
+        LocalDate start = LocalDates.create(2006, 7, 13);
         LocalDate today = LocalDates.create(2009, 12, 12);
 
         InterestRate i1 = InterestRate.createWithMonthlyInterestRate(new BigDecimal("2.5"));
