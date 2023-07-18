@@ -172,7 +172,7 @@ public class Dates {
     }
 
     public static int maximumDayOfMonth(int year, int month) {
-        if(month == 11){
+        if (month == 11) {
             return isLeapYear(year) ? 29 : 28;
         }
 
@@ -201,6 +201,18 @@ public class Dates {
         return Arrays.asList(2, 4, 6, 9);
     }
 
+
+    public static Date currentDateOrNextWorkDate(Date date, List<DayMonth> holidaysInEveryYear) {
+        return currentDateOrNextWorkDate(date, true, true, holidaysInEveryYear);
+    }
+
+    public static Date currentDateOrNextWorkDate(Date date, boolean weekendIsHoliday, List<DayMonth> holidaysInEveryYear) {
+        return currentDateOrNextWorkDate(date, weekendIsHoliday, weekendIsHoliday, holidaysInEveryYear);
+    }
+
+    public static Date currentDateOrNextWorkDate(Date date) {
+        return currentDateOrNextWorkDate(date, true, true, new ArrayList<>());
+    }
 
     public static Date currentDateOrNextWorkDate(Date date, boolean isSaturdayIsHoliday, boolean isSundayIsHoliday, List<DayMonth> holidaysInEveryYear) {
         if (isHoliday(date, isSaturdayIsHoliday, isSundayIsHoliday, holidaysInEveryYear)) {

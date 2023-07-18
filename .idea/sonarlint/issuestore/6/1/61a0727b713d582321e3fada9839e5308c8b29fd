@@ -1,0 +1,20 @@
+
+m
+java:S1128"KRemove this unused import 'io.bayrktlihn.template.config.JpaConfiguration'.(¹ÑÑ¢úÿÿÿÿ8ä…ç§–1
+c
+java:S1128"ARemove this unused import 'io.bayrktlihn.template.entity.Person'.(¯Ÿº˜øÿÿÿÿ8ä…ç§–1
+d
+java:S1128"BRemove this unused import 'io.bayrktlihn.template.entity.Person_'.(³ûÇ€ùÿÿÿÿ8ä…ç§–1
+^
+java:S1128"<Remove this unused import 'javax.persistence.EntityManager'.(ðàËÒýÿÿÿÿ8ä…ç§–1
+`
+java:S1128"CRemove this unused import 'javax.persistence.EntityManagerFactory'.(îÜð8ä…ç§–1
+V
+java:S1128	"9Remove this unused import 'javax.persistence.TypedQuery'.(—ÐÝ¦8ä…ç§–1
+c
+java:S1128
+"GRemove this unused import 'javax.persistence.criteria.CriteriaBuilder'.(É¿F8ä…ç§–1
+g
+java:S1128"ERemove this unused import 'javax.persistence.criteria.CriteriaQuery'.(ýÞŽ§ÿÿÿÿÿ8ä…ç§–1
+Y
+java:S1128"<Remove this unused import 'javax.persistence.criteria.Root'.(ùÆšð8ä…ç§–1

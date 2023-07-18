@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LocalDates {
@@ -57,6 +58,17 @@ public class LocalDates {
 //        return localDate.with(TemporalAdjusters.lastDayOfMonth());
     }
 
+    public static LocalDate currentDateOrNextWorkDate(LocalDate localDate) {
+        return currentDateOrNextWorkDate(localDate, true, true, new ArrayList<>());
+    }
+
+    public static LocalDate currentDateOrNextWorkDate(LocalDate localDate, boolean weekendIsHoliday){
+        return currentDateOrNextWorkDate(localDate, weekendIsHoliday, weekendIsHoliday, new ArrayList<>());
+    }
+
+    public static LocalDate currentDateOrNextWorkDate(LocalDate localDate, List<DayMonth> holidaysInEveryYear) {
+        return currentDateOrNextWorkDate(localDate, true, true, holidaysInEveryYear);
+    }
 
     public static LocalDate currentDateOrNextWorkDate(LocalDate localDate, boolean isSaturdayIsHoliday, boolean isSundayIsHoliday, List<DayMonth> holidaysInEveryYear) {
         if (isHoliday(localDate, isSaturdayIsHoliday, isSundayIsHoliday, holidaysInEveryYear)) {
