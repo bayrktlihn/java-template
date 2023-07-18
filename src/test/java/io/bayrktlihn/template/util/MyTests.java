@@ -41,7 +41,7 @@ class MyTests {
             LocalDate to = fromTo.getTo() == null ? LocalDate.MAX : fromTo.getTo();
             LocalDate from = fromTo.getFrom() == null ? LocalDate.MIN : fromTo.getFrom();
 
-            if (to.isAfter(start) && from.isBefore(today)) {
+            if (from.isBefore(start) && to.isAfter(start)) {
                 return true;
             }
 
