@@ -31,12 +31,12 @@ public class LocalDateFromTo {
 
     public static LocalDateFromTo create(int fromYear, LocalDate to) {
         LocalDate from = LocalDates.create(fromYear, 1, 1);
-        return new LocalDateFromTo(from, to);
+        return create(from, to);
     }
 
     public static LocalDateFromTo create(LocalDate from, int toYear) {
         LocalDate to = LocalDates.create(toYear, 12, 31);
-        return new LocalDateFromTo(from, to);
+        return create(from, to);
     }
 
     public static LocalDateFromTo create(int fromYear, int toYear) {
