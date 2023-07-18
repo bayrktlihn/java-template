@@ -108,12 +108,26 @@ public class Dates {
 
     }
 
+    public static int maxYear(){
+        Calendar calendar = Calendar.getInstance();
+
+        return calendar.getActualMaximum(Calendar.YEAR);
+    }
+
+    public static int minYear(){
+        Calendar calendar = Calendar.getInstance();
+
+        return calendar.getActualMinimum(Calendar.YEAR);
+    }
+
     public static Date create(int year, int month, int dayOfMonth) {
         Calendar calendar = Calendar.getInstance();
 
+        int minYear = minYear();
+
         int maximumYear = calendar.getActualMaximum(Calendar.YEAR);
-        if (year < 0 || year > maximumYear) {
-            throw new IllegalArgumentException(String.format("Year must be between %s and %s", 1, maximumYear));
+        if (year < minYear-1 || year > maximumYear) {
+            throw new IllegalArgumentException(String.format("Year must be between %s and %s", minYear, maximumYear));
         }
         calendar.set(Calendar.YEAR, year);
 

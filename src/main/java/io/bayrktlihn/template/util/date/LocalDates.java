@@ -5,6 +5,7 @@ import io.bayrktlihn.template.util.date.model.DayMonth;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.Year;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -29,7 +30,30 @@ public class LocalDates {
         return LocalDate.of(year, 12, 31);
     }
 
+    public static int minYear() {
+        return Year.MIN_VALUE;
+    }
+
+    public static int maxYear() {
+        return Year.MAX_VALUE;
+    }
+
     public static LocalDate create(int year, int month, int dayOfMonth) {
+        int minYear = minYear();
+        if (maxYear() < year || minYear - 1 > year) {
+            throw new IllegalArgumentException(String.format("Year must be between %s and %s", minYear, Year.MAX_VALUE));
+        }
+
+        if (month < 1 || month > 12) {
+            throw new IllegalArgumentException(String.format("Month must be between %s and %s", 1, 12));
+        }
+
+        int maximumDayOfMonth = Dates.maximumDayOfMonth(year, month);
+
+        if (dayOfMonth < 1 || dayOfMonth > maximumDayOfMonth) {
+            throw new IllegalArgumentException(
+                    String.format("Day of month must be between %s and %s", 1, maximumDayOfMonth));
+        }
         return LocalDate.of(year, month, dayOfMonth);
     }
 
@@ -62,11 +86,11 @@ public class LocalDates {
         return currentDateOrNextWorkDate(localDate, true, true, new ArrayList<>());
     }
 
-    public static LocalDate currentDateOrNextWorkDate(LocalDate localDate, boolean weekendIsHoliday){
+    public static LocalDate currentDateOrNextWorkDate(LocalDate localDate, boolean weekendIsHoliday) {
         return currentDateOrNextWorkDate(localDate, weekendIsHoliday, weekendIsHoliday, new ArrayList<>());
     }
 
-    public static LocalDate currentDateOrNextWorkDate(LocalDate localDate, boolean weekendIsHoliday, List<DayMonth> holidaysInEveryYear){
+    public static LocalDate currentDateOrNextWorkDate(LocalDate localDate, boolean weekendIsHoliday, List<DayMonth> holidaysInEveryYear) {
         return currentDateOrNextWorkDate(localDate, weekendIsHoliday, weekendIsHoliday, holidaysInEveryYear);
     }
 

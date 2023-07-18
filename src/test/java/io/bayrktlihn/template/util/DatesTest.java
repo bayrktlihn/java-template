@@ -17,6 +17,22 @@ import java.util.List;
 class DatesTest {
 
     @Test
+    void createFail(){
+        Date date = Dates.create(1, 1, 1);
+        System.out.println(date);
+    }
+
+    @Test
+    void maxYear(){
+        System.out.println(Dates.maxYear());
+    }
+
+    @Test
+    void minYear(){
+        System.out.println(Dates.minYear());
+    }
+
+    @Test
     void startOfDay() {
         Date date = Dates.create(1995, 10, 4);
         String dateString = Dates.toString(date, "dd.MM.yyyy");

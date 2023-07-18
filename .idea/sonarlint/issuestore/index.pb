@@ -34,12 +34,8 @@ h
 8src/test/java/io/bayrktlihn/template/util/BytesTest.java,3\d\3dd418c41429aca71746e0cad081a3fff05b6016
 k
 ;src/test/java/io/bayrktlihn/template/util/FileUtilTest.java,b\d\bdaeeb22911e0ee09d262a58f486760d6e14b78d
-g
-7src/test/java/io/bayrktlihn/template/util/JSONTest.java,a\d\adbfc53f2cdbd72722324730e8b5a6ac8da7a863
 o
 ?src/test/java/io/bayrktlihn/template/util/NumberFormatTest.java,a\a\aa504d787310b22a6c0f5be08e262ae174f5a4d5
-f
-6src/test/java/io/bayrktlihn/template/util/XMLTest.java,e\a\ea874bc83f67833253e2de0f0bb160607d2c2433
 v
 Fsrc/test/java/io/bayrktlihn/template/util/hashing/impl/Sha256Test.java,7\2\722a5f299b6f69518bd3388248065f1cdafc531a
 v
@@ -56,8 +52,6 @@ k
 ;src/test/java/io/bayrktlihn/template/util/SecurityTest.java,9\5\95b82ef1517d9d389654a33d04cfc11485f4d7f7
 q
 Asrc/main/java/io/bayrktlihn/template/config/JpaConfiguration.java,e\7\e73ba5ba90d79eb05e5ec4b89ac87c4d806de0f7
-p
-@src/test/java/io/bayrktlihn/template/util/JasperReportsTest.java,8\0\80e137d374f5f29d5ff195c63cb88c6c87aa2b44
 l
 <src/main/java/io/bayrktlihn/template/util/JasperReports.java,d\b\db47e18defe8cc1c134fd2a30495fc29fc49eb49
 7
@@ -76,8 +70,6 @@ w
 G.idea/sonarlint/issuestore/3/a/3a96213fb983751d485fa060bb81847e8896fd24,e\6\e6c8370c05dd7c249c7522ae09ac8ca08494f5e4
 €
 Psrc/main/java/io/bayrktlihn/template/calculator/interest/InterestCalculator.java,5\6\56082fd57bafbe6cbe14bafbae7cd49e46e9a7c9
-„
-Tsrc/test/java/io/bayrktlihn/template/calculator/interest/InterestCalculatorTest.java,4\3\43c0d010d8c10baae9ec4b1a658c3267d4e5d73c
 k
 ;src/main/java/io/bayrktlihn/template/util/InterestRate.java,b\0\b0fc66968e38acf61f832151647b26718158b01a
 o

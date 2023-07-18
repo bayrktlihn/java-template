@@ -8,9 +8,15 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.time.Year;
 import java.util.List;
 
 class LocalDatesTest {
+
+    @Test
+    void create(){
+        System.out.println(Year.MAX_VALUE);
+    }
 
     @Test
     void currentDateOrNextWorkDate2(){
