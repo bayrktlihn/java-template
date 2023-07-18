@@ -22,7 +22,7 @@ class MyTests {
 
     private static void simulateInterestRate() {
         LocalDate start = LocalDates.create(2006, 7, 13);
-        LocalDate today = LocalDates.create(2010, 10, 19);
+        LocalDate today = LocalDates.create(2010, 7, 13);
 
         InterestRate i1 = InterestRate.createWithMonthlyInterestRate(new BigDecimal("2.5"));
         InterestRate i2 = InterestRate.createWithMonthlyInterestRate(new BigDecimal("2.5"));
@@ -41,7 +41,7 @@ class MyTests {
             LocalDate to = fromTo.getTo() == null ? LocalDate.MAX : fromTo.getTo();
             LocalDate from = fromTo.getFrom() == null ? LocalDate.MIN : fromTo.getFrom();
 
-            if (from.isBefore(start) && to.isAfter(start)) {
+            if (LocalDates.beforeOrIsEqual(from, start) && to.isAfter(start)) {
                 return true;
             }
 
