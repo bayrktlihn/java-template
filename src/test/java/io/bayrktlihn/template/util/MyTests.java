@@ -56,7 +56,7 @@ class MyTests {
                 return true;
             }
             return false;
-        }).collect(Collectors.toList());
+        }).sorted(LocalDateFromToObject::compareWithLocalDateTo).collect(Collectors.toList());
 
         int firstIndex = 0;
         int lastIndex = collect.size() - 1;
