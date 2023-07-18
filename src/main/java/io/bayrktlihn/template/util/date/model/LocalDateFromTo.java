@@ -19,7 +19,18 @@ public class LocalDateFromTo {
         this.to = to;
     }
 
+    public static LocalDateFromTo createWithFrom(LocalDate from) {
+        return create(from, LocalDate.MAX);
+    }
+
+    public static LocalDateFromTo createWithTo(LocalDate to) {
+        return create(LocalDate.MIN, to);
+    }
+
+
     public static LocalDateFromTo create(LocalDate from, LocalDate to) {
+        from = from == null ? LocalDate.MIN : from;
+        to = to == null ? LocalDate.MAX : to;
         Period period = Period.between(from, to);
         int total = period.getMonths() + period.getYears() + period.getDays();
         if (total < 1) {
@@ -31,11 +42,13 @@ public class LocalDateFromTo {
 
     public static LocalDateFromTo create(int fromYear, LocalDate to) {
         LocalDate from = LocalDates.create(fromYear, 1, 1);
+        to = to == null ? LocalDate.MAX : to;
         return create(from, to);
     }
 
     public static LocalDateFromTo create(LocalDate from, int toYear) {
         LocalDate to = LocalDates.create(toYear, 12, 31);
+        from = from == null ? LocalDate.MIN : from;
         return create(from, to);
     }
 

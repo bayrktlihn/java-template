@@ -27,10 +27,10 @@ class MyTests {
         InterestRate i4 = InterestRate.createWithMonthlyInterestRate(new BigDecimal("1.5"));
 
         List<LocalDateFromToObject<InterestRate>> fromToList = new ArrayList<>();
-        fromToList.add(new LocalDateFromToObject<>(LocalDateFromTo.create(Year.MIN_VALUE, LocalDates.create(2006, 4, 20)), i1));
+        fromToList.add(new LocalDateFromToObject<>(LocalDateFromTo.createWithTo(LocalDates.create(2006, 4, 20)), i1));
         fromToList.add(new LocalDateFromToObject<>(LocalDateFromTo.create(LocalDates.create(2006, 4, 21), LocalDates.create(2009, 11, 18)), i2));
         fromToList.add(new LocalDateFromToObject<>(LocalDateFromTo.create(LocalDates.create(2009, 11, 19), LocalDates.create(2010, 10, 18)), i3));
-        fromToList.add(new LocalDateFromToObject<>(LocalDateFromTo.create(LocalDates.create(2010, 10, 18), Year.MAX_VALUE), i4));
+        fromToList.add(new LocalDateFromToObject<>(LocalDateFromTo.createWithFrom(LocalDates.create(2010, 10, 18)), i4));
 
 
         List<LocalDateFromToObject> collect = fromToList.stream().filter(item -> {
