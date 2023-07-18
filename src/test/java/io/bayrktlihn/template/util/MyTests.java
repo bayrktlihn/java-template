@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
-import java.time.Year;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,9 +41,7 @@ class MyTests {
             LocalDate to = fromTo.getTo() == null ? LocalDate.MAX : fromTo.getTo();
             LocalDate from = fromTo.getFrom() == null ? LocalDate.MIN : fromTo.getFrom();
 
-            boolean c1 = to.isAfter(start);
-            boolean c2 = from.isBefore(today);
-            if (c1 && c2) {
+            if (to.isAfter(start) && from.isBefore(today)) {
                 return true;
             }
 
