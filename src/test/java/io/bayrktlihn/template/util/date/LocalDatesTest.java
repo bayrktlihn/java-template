@@ -25,7 +25,7 @@ class LocalDatesTest {
 
         LocalDate localDate = LocalDates.createLocalDate(2018, 10, 27);
 
-        LocalDate nextLocalDate = LocalDates.currentDateOrNextWorkDate2(localDate, true, true, holidaysInEveryYear);
+        LocalDate nextLocalDate = LocalDates.currentDateOrNextWorkDate(localDate, true, holidaysInEveryYear);
 
         System.out.println(nextLocalDate);
     }

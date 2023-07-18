@@ -206,6 +206,10 @@ public class Dates {
         return currentDateOrNextWorkDate(date, true, true, holidaysInEveryYear);
     }
 
+    public static Date currentDateOrNextWorkDate(Date date, boolean weekendIsHoliday) {
+        return currentDateOrNextWorkDate(date, true, true, new ArrayList<>());
+    }
+
     public static Date currentDateOrNextWorkDate(Date date, boolean weekendIsHoliday, List<DayMonth> holidaysInEveryYear) {
         return currentDateOrNextWorkDate(date, weekendIsHoliday, weekendIsHoliday, holidaysInEveryYear);
     }

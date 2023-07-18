@@ -66,6 +66,10 @@ public class LocalDates {
         return currentDateOrNextWorkDate(localDate, weekendIsHoliday, weekendIsHoliday, new ArrayList<>());
     }
 
+    public static LocalDate currentDateOrNextWorkDate(LocalDate localDate, boolean weekendIsHoliday, List<DayMonth> holidaysInEveryYear){
+        return currentDateOrNextWorkDate(localDate, weekendIsHoliday, weekendIsHoliday, holidaysInEveryYear);
+    }
+
     public static LocalDate currentDateOrNextWorkDate(LocalDate localDate, List<DayMonth> holidaysInEveryYear) {
         return currentDateOrNextWorkDate(localDate, true, true, holidaysInEveryYear);
     }
