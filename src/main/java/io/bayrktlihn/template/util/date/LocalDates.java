@@ -29,7 +29,7 @@ public class LocalDates {
         return LocalDate.of(year, 12, 31);
     }
 
-    public static LocalDate createLocalDate(int year, int month, int dayOfMonth) {
+    public static LocalDate create(int year, int month, int dayOfMonth) {
         return LocalDate.of(year, month, dayOfMonth);
     }
 

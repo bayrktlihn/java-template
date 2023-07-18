@@ -16,7 +16,7 @@ class JSONTest {
 		Person person = new Person();
 		person.setFirstName("alihan");
 		person.setLastName("bayraktar");
-		person.setBirthDate(Dates.createDate(1995, 10, 4));
+		person.setBirthDate(Dates.create(1995, 10, 4));
 
 		String json = JSON.stringify(person);
 		System.out.println(json);

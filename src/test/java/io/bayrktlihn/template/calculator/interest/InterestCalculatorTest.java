@@ -13,8 +13,8 @@ class InterestCalculatorTest {
     @Test
     void calculate() {
         InterestRate interestRate = InterestRate.createWithMonthlyInterestRate(new BigDecimal("2.5"));
-        LocalDate from = LocalDates.createLocalDate(2019, 7, 1);
-        LocalDate to = LocalDates.createLocalDate(2019, 9, 29);
+        LocalDate from = LocalDates.create(2019, 7, 1);
+        LocalDate to = LocalDates.create(2019, 9, 29);
         LocalDate toIter = to.minus(6, ChronoUnit.DAYS);
 
         while(toIter.isBefore(to)){

@@ -10,8 +10,6 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class LocalDatesTest {
 
     @Test
@@ -23,7 +21,7 @@ class LocalDatesTest {
         List<DayMonth> holidaysInEveryYear = JSON.parseList(fileContent, DayMonth.class);
 
 
-        LocalDate localDate = LocalDates.createLocalDate(2018, 10, 27);
+        LocalDate localDate = LocalDates.create(2018, 10, 27);
 
         LocalDate nextLocalDate = LocalDates.currentDateOrNextWorkDate(localDate, true, holidaysInEveryYear);
 

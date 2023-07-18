@@ -18,7 +18,7 @@ class DatesTest {
 
     @Test
     void startOfDay() {
-        Date date = Dates.createDate(1995, 10, 4);
+        Date date = Dates.create(1995, 10, 4);
         String dateString = Dates.toString(date, "dd.MM.yyyy");
         Assertions.assertEquals("04.10.1995", dateString);
     }
@@ -33,7 +33,7 @@ class DatesTest {
 
     @Test
     void period() {
-        Date birthDate = Dates.createDate(1995, 7, 14);
+        Date birthDate = Dates.create(1995, 7, 14);
         Date endDate = Dates.createStartOfDay(2000, 8, 13);
 
         Period period = Dates.period(birthDate, endDate);
@@ -95,7 +95,7 @@ class DatesTest {
 
         List<DayMonth> holidaysInEveryYear = JSON.parseList(fileContent, DayMonth.class);
 
-        Date date = Dates.createDate(2021, 10, 29);
+        Date date = Dates.create(2021, 10, 29);
         Date fixedDate = Dates.currentDateOrNextWorkDate(date, true, true, holidaysInEveryYear);
 
         Calendar calendar = Calendar.getInstance();

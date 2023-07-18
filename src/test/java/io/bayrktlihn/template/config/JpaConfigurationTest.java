@@ -46,7 +46,7 @@ class JpaConfigurationTest {
         EntityTransaction tx = entityManager.getTransaction();
 
         Person person = entityManager.find(Person.class, 1L);
-        person.setBirthDate(Dates.createDate(1995, 11, 4));
+        person.setBirthDate(Dates.create(1995, 11, 4));
         tx.begin();
 
         tx.commit();

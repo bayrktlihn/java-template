@@ -108,7 +108,7 @@ public class Dates {
 
     }
 
-    public static Date createDate(int year, int month, int dayOfMonth) {
+    public static Date create(int year, int month, int dayOfMonth) {
         Calendar calendar = Calendar.getInstance();
 
         int maximumYear = calendar.getActualMaximum(Calendar.YEAR);
@@ -228,12 +228,12 @@ public class Dates {
 
 
     public static Date createStartOfDay(int year, int month, int dayOfMonth) {
-        Date date = createDate(year, month, dayOfMonth);
+        Date date = create(year, month, dayOfMonth);
         return startOfDay(date);
     }
 
     public static Date createEndOfDay(int year, int month, int dayOfMonth) {
-        Date date = createDate(year, month, dayOfMonth);
+        Date date = create(year, month, dayOfMonth);
         return endOfDay(date);
     }
 

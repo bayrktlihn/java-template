@@ -14,7 +14,7 @@ class XMLTest {
 		person.setGender(Gender.MAN);
 		person.setFirstName("alihan");
 		person.setLastName("bayraktar");
-		person.setBirthDate(Dates.createDate(1995, 10, 4));
+		person.setBirthDate(Dates.create(1995, 10, 4));
 
 		String xml = XML.stringify(person);
 		System.out.println(xml);

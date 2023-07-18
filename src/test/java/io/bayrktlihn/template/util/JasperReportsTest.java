@@ -27,11 +27,11 @@ class JasperReportsTest {
 
 		List<Person> persons = new ArrayList<>();
 		persons.add(Person.builder().firstName("Alihan").lastName("Bayraktar").gender(Gender.MAN)
-				.birthDate(Dates.createDate(1995, 10, 4)).build());
+				.birthDate(Dates.create(1995, 10, 4)).build());
 		persons.add(Person.builder().firstName("Merve").lastName("Bayraktar").gender(Gender.WOMAN)
-				.birthDate(Dates.createDate(1998, 6, 18)).build());
+				.birthDate(Dates.create(1998, 6, 18)).build());
 		persons.add(Person.builder().firstName("Deniz").lastName("Bayraktar").gender(Gender.WOMAN)
-				.birthDate(Dates.createDate(1995, 11, 29)).build());
+				.birthDate(Dates.create(1995, 11, 29)).build());
 
 		try {
 			params.put("image", Files.newInputStream(imagePath));
