@@ -42,7 +42,7 @@ public class InterestRate {
         InterestRate interestRate = new InterestRate();
         interestRate.setMonthly(monthlyInterestRate);
         interestRate.setYearly(monthlyInterestRate.multiply(new BigDecimal("12")));
-        interestRate.setDaily(interestRate.getYearly().divide(new BigDecimal("365"), 15, RoundingMode.HALF_UP));
+        interestRate.setDaily(monthlyInterestRate.divide(new BigDecimal("30"), 4, RoundingMode.HALF_UP));
         return interestRate;
     }
 

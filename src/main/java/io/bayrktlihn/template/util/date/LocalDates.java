@@ -38,6 +38,14 @@ public class LocalDates {
         return Year.MAX_VALUE;
     }
 
+    public static boolean equalOrIsAfter(LocalDate localDate, LocalDate otherLocalDate){
+        return localDate.isEqual(otherLocalDate) || localDate.isAfter(otherLocalDate);
+    }
+
+    public static boolean equalOrIsBefore(LocalDate localDate, LocalDate otherLocalDate){
+        return localDate.isEqual(otherLocalDate) || localDate.isBefore(otherLocalDate);
+    }
+
     public static LocalDate create(int year, int month, int dayOfMonth) {
         int minYear = minYear();
         if (maxYear() < year || minYear - 1 > year) {
