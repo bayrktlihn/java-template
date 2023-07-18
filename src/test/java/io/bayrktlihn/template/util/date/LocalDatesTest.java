@@ -4,6 +4,7 @@ import io.bayrktlihn.template.util.FileUtil;
 import io.bayrktlihn.template.util.JSON;
 import io.bayrktlihn.template.util.PathUtil;
 import io.bayrktlihn.template.util.date.model.DayMonth;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
@@ -14,12 +15,14 @@ import java.util.List;
 class LocalDatesTest {
 
     @Test
-    void create(){
-        System.out.println(Year.MAX_VALUE);
+    void create() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            LocalDates.create(Year.MAX_VALUE + 1, 12, 30);
+        });
     }
 
     @Test
-    void currentDateOrNextWorkDate2(){
+    void currentDateOrNextWorkDate() {
 
         Path path = PathUtil.getPathFromClasspath("holidays_in_every_year_tr.json");
         String fileContent = FileUtil.readAll(path.toFile());
