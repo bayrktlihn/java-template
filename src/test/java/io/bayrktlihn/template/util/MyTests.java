@@ -18,6 +18,10 @@ class MyTests {
 
     @Test
     void test() {
+        simulateInterestRate();
+    }
+
+    private static void simulateInterestRate() {
         LocalDate start = LocalDates.create(2009, 12, 11);
         LocalDate today = LocalDates.create(2009, 12, 12);
 
@@ -72,7 +76,5 @@ class MyTests {
         }
 
         System.out.println(total.setScale(2, RoundingMode.UP));
-
-
     }
 }
