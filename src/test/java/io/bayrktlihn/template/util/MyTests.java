@@ -37,7 +37,7 @@ class MyTests {
         fromToList.add(new LocalDateFromToObject<>(LocalDateFromTo.createWithFrom(LocalDates.create(2010, 10, 18)), i4));
 
 
-        List<LocalDateFromToObject> collect = fromToList.stream().filter(item -> {
+        List<LocalDateFromToObject<InterestRate>> collect = fromToList.stream().filter(item -> {
             LocalDateFromTo fromTo = item.getFromTo();
             LocalDate to = fromTo.getTo() == null ? LocalDate.MAX : fromTo.getTo();
             LocalDate from = fromTo.getFrom() == null ? LocalDate.MIN : fromTo.getFrom();
