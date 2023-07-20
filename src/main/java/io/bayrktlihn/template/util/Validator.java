@@ -5,6 +5,12 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
+    public static boolean validateVakifBankCardNumber(String cardNumber){
+        Pattern compile = Pattern.compile("^((418342|418343|418344|418345|438331|450803|454318|454358|454359|454360|473998|474301|474340|474508|479610|510152|525382|540667|540668|543771|548237|552096|553058|559289|650173|650987|650990|979204)\\d{2}|47430810|47430811)\\d{8}$");
+        Matcher matcher = compile.matcher(cardNumber);
+        return matcher.matches();
+    }
+
     public static boolean validateTurkishVehiclePlate(String turkishPlate) {
         if (turkishPlate == null) {
             return false;
