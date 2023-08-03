@@ -23,7 +23,7 @@ public class Validator {
 
         boolean evenNumber = false;
         for (int i = cardNumber.length() - 1; i > -1; i--) {
-            String digit = cardNumber.substring(i, i + 1);
+            String digit = StringUtil.stringAt(cardNumber, i);
             if (evenNumber) {
                 evenNumbers.add(Integer.valueOf(digit));
             } else {
