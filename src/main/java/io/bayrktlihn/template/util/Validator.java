@@ -1,11 +1,53 @@
 package io.bayrktlihn.template.util;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class Validator {
 
-    public static boolean validateVakifBankCardNumber(String cardNumber){
+
+    public static boolean validateCardNumber(String cardNumber) {
+        if (!allCharacterIsDigit(cardNumber)) {
+            throw new RuntimeException();
+        }
+
+        return luhnAlgorithm(cardNumber);
+    }
+
+    private static boolean luhnAlgorithm(String cardNumber) {
+        List<Integer> evenNumbers = new ArrayList<>();
+        List<Integer> oddNumbers = new ArrayList<>();
+
+        boolean evenNumber = false;
+        for (int i = cardNumber.length() - 1; i > -1; i--) {
+            String digit = cardNumber.substring(i, i + 1);
+            if (evenNumber) {
+                evenNumbers.add(Integer.valueOf(digit));
+            } else {
+                oddNumbers.add(Integer.valueOf(digit));
+            }
+            evenNumber = !evenNumber;
+        }
+
+        int resultOfOddNumbers = oddNumbers.stream().mapToInt(item -> item).sum();
+        int resultOfEvenNumbers = evenNumbers.stream().map(item -> item * 2).flatMap(item -> {
+            if (item > 9) {
+                return Stream.of(item % 10, item / 10);
+            }
+            return Stream.of(item);
+        }).mapToInt(item -> item).sum();
+
+        int totalResult = resultOfEvenNumbers + resultOfOddNumbers;
+
+        return totalResult % 10 == 0;
+
+
+    }
+
+    public static boolean validateVakifBankCardNumber(String cardNumber) {
         Pattern compile = Pattern.compile("^((418342|418343|418344|418345|438331|450803|454318|454358|454359|454360|473998|474301|474340|474508|479610|510152|525382|540667|540668|543771|548237|552096|553058|559289|650173|650987|650990|979204)\\d{2}|47430810|47430811)\\d{8}$");
         Matcher matcher = compile.matcher(cardNumber);
         return matcher.matches();
@@ -42,9 +84,9 @@ public class Validator {
         int indexOfNinthDigit = indexOfTenthDigit - 1;
         int indexOfFirstDigit = 0;
         int indexOfSecondDigit = indexOfFirstDigit + 1;
-        int tenthDigit = Integer.parseInt(String.valueOf(turkishIdentifierNumber.charAt(indexOfTenthDigit)));
-        int eleventhDigit = Integer.parseInt(String.valueOf(turkishIdentifierNumber.charAt(indexOfEleventhDigit)));
-        int firstDigit = Integer.parseInt(String.valueOf(turkishIdentifierNumber.charAt(indexOfFirstDigit)));
+        int tenthDigit = Integer.parseInt(StringUtil.stringAt(turkishIdentifierNumber, indexOfTenthDigit));
+        int eleventhDigit = Integer.parseInt(StringUtil.stringAt(turkishIdentifierNumber, indexOfEleventhDigit));
+        int firstDigit = Integer.parseInt(StringUtil.stringAt(turkishIdentifierNumber, indexOfFirstDigit));
 
         if (firstDigit == 0) {
             return false;

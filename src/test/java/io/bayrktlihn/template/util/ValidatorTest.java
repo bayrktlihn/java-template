@@ -13,9 +13,14 @@ class ValidatorTest {
     }
 
     @Test
-    void validateInvalidTurkishVehiclePlate(){
+    void validateInvalidTurkishVehiclePlate() {
         boolean result = Validator.validateTurkishVehiclePlate("00 FF 494");
         Assertions.assertFalse(result);
     }
 
+    @Test
+    void validateCardNumber() {
+        boolean valid = Validator.validateCardNumber("30569309025904");
+        Assertions.assertTrue(valid);
+    }
 }
