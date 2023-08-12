@@ -1,9 +1,19 @@
 package io.bayrktlihn.template.util;
 
+import java.math.BigDecimal;
+
 public class StringUtil {
 
 
     public static final String DEFAULT_MASK_CHARACTER = "*";
+
+
+    public static int compareToByNumber(String num1, String num2) {
+        if (allCharacterIsDigit(num1) && allCharacterIsDigit(num2)) {
+            return new BigDecimal(num1).compareTo(new BigDecimal(num2));
+        }
+        throw new IllegalArgumentException();
+    }
 
     public static String stringAt(String str, int index) {
         return str.substring(index, index + 1);
@@ -54,6 +64,24 @@ public class StringUtil {
             sb.append(str);
         }
         return sb.toString();
+    }
+
+
+    public static boolean allCharacterIsDigit(String str) {
+        if (str == null) {
+            return false;
+        }
+
+        for (int i = 0; i < str.toCharArray().length; i++) {
+            char c = str.charAt(i);
+
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+
+        return true;
+
     }
 
 }

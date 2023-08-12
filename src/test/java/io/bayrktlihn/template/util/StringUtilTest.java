@@ -18,4 +18,11 @@ class StringUtilTest {
         Assertions.assertEquals("545454********54", maskedAlihan);
     }
 
+
+    @Test
+    void compareToByNumber() {
+        int i = StringUtil.compareToByNumber("0530", "540");
+        Assertions.assertEquals(-1, i);
+    }
+
 }

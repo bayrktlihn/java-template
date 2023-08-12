@@ -10,7 +10,7 @@ public class Validator {
 
 
     public static boolean validateCardNumber(String cardNumber) {
-        if (!allCharacterIsDigit(cardNumber)) {
+        if (!StringUtil.allCharacterIsDigit(cardNumber)) {
             throw new RuntimeException();
         }
 
@@ -75,7 +75,7 @@ public class Validator {
             return false;
         }
 
-        if (!allCharacterIsDigit(turkishIdentifierNumber)) {
+        if (!StringUtil.allCharacterIsDigit(turkishIdentifierNumber)) {
             return false;
         }
 
@@ -114,23 +114,6 @@ public class Validator {
 
         if (totalOfFirstToTenth % 10 != eleventhDigit) {
             return false;
-        }
-
-        return true;
-
-    }
-
-    private static boolean allCharacterIsDigit(String text) {
-        if (text == null) {
-            return false;
-        }
-
-        for (int i = 0; i < text.toCharArray().length; i++) {
-            char c = text.charAt(i);
-
-            if (!Character.isDigit(c)) {
-                return false;
-            }
         }
 
         return true;
