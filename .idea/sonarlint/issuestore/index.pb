@@ -15,8 +15,6 @@ d
 Å
 Q.idea/sonarlint/securityhotspotstore/5/0/505f9605c673953236c21efa3a1136011b7edb6b,e\4\e482465acf7bb3657c021f0d7335eb82a425418e
 Å
-Q.idea/sonarlint/securityhotspotstore/0/6/065075ac22272385f801eef793c20ab7cb1cd292,6\4\64f25385015f062cdd690cf4a2545746ba7f74f3
-Å
 Q.idea/sonarlint/securityhotspotstore/1/6/16124e0d1de50e14146a55e4f16c3a893b8bc3d9,c\0\c058004f7b672b8396afd5068d1021020b05d001
 Å
 Q.idea/sonarlint/securityhotspotstore/c/f/cfadff57a0757193f88105393b52cc002525ed07,2\e\2ef0ca51848486373cd847df5d3f1a7964a854d8
@@ -48,10 +46,6 @@ k
 ;src/test/java/io/bayrktlihn/template/util/SecurityTest.java,9\5\95b82ef1517d9d389654a33d04cfc11485f4d7f7
 l
 <src/main/java/io/bayrktlihn/template/util/JasperReports.java,d\b\db47e18defe8cc1c134fd2a30495fc29fc49eb49
-w
-G.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,8\6\863e0292fd7e9b3e74dafd6cc01f73ba76346482
-Å
-Q.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,2\c\2cabb939da04d3de3a200bf2b575690e1a16316d
 o
 ?src/test/java/io/bayrktlihn/template/util/InterestRateTest.java,a\3\a3d7ac92ae932d0aebbd0bbf75e74bd813784dc4
 m
