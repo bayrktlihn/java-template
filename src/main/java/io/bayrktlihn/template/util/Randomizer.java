@@ -12,6 +12,7 @@ public class Randomizer {
 
     public static String generateByDateTime() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
-        return dateTimeFormatter.format(LocalDateTime.now()) + ThreadLocalRandom.current().nextInt(1, 1_000_000);
+        long randomNumber = ThreadLocalRandom.current().nextLong(1L, 999_999_999_999L);
+        return dateTimeFormatter.format(LocalDateTime.now()) + String.format("%012d", randomNumber);
     }
 }
