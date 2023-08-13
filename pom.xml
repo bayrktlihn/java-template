@@ -116,7 +116,6 @@
         </dependency>
 
 
-
         <!--
         https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
         <dependency>
@@ -170,7 +169,6 @@
                     <target>${java.version}</target>
 
 
-
                     <annotationProcessorPaths>
 
                         <path>
@@ -201,6 +199,35 @@
 
                     </annotationProcessorPaths>
                 </configuration>
+            </plugin>
+
+
+            <plugin>
+                <groupId>com.sun.xml.ws</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.3.6</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+
+                    <packageName>io.bayrktlihn.wsdl.vakifbank</packageName>
+                    <sourceDestDir>
+                        ${project.build.directory}/generated-sources/wsimport
+                    </sourceDestDir>
+
+                    <wsdlUrls>
+                        <wsdlUrl>
+                            https://onlineodemetest.vakifbank.com.tr:4443/VposService/TransactionServices.asmx?WSDL
+                        </wsdlUrl>
+                    </wsdlUrls>
+                </configuration>
+
+
             </plugin>
 
 
