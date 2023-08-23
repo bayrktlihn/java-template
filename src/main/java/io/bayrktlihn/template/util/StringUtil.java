@@ -1,11 +1,19 @@
 package io.bayrktlihn.template.util;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class StringUtil {
 
 
     public static final String DEFAULT_MASK_CHARACTER = "*";
+    public static final String TURKISH_PHONE_REGEX = regexs(
+            "^0\\(5\\d{2}\\)-\\d{3}-\\d{2}-\\d{2}$",
+            "^5\\d{2}-\\d{3}-\\d{2}-\\d{2}$",
+            "^5\\d{9}$",
+            "^\\(5\\d{2}\\)-\\d{3}-\\d{2}-\\d{2}$"
+    );
 
 
     public static int compareToByNumber(String num1, String num2) {
@@ -83,5 +91,17 @@ public class StringUtil {
         return true;
 
     }
+
+    public static String regexs(String... regexs) {
+        if (regexs == null || regexs.length == 0) {
+            return null;
+        }
+
+
+        return Arrays.stream(regexs)
+                .map(item -> "(" + item + ")")
+                .collect(Collectors.joining("|"));
+    }
+
 
 }
