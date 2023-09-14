@@ -48,11 +48,12 @@ class LocalDatesTest {
     @Test
     void currentDateOrNextWorkDate() {
 
-        LocalDate localDate = LocalDates.create(2024, 10, 28);
+        LocalDate localDate = LocalDates.create(2024, 4, 10);
 
         ArrayList<LocalDate> holidays = new ArrayList<>();
-        holidays.add(LocalDates.create(2024,10, 28));
-        holidays.add(LocalDates.create(2024,10, 30));
+        holidays.add(LocalDates.create(2024,4, 10));
+        holidays.add(LocalDates.create(2024,4, 11));
+        holidays.add(LocalDates.create(2024,4, 12));
 
         LocalDate nextLocalDate = LocalDates.currentDateOrNextWorkDate(localDate, true, LocalDates.turkishHolidays(), holidays);
 
