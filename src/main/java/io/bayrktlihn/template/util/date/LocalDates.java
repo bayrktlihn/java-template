@@ -205,7 +205,7 @@ public class LocalDates {
             if (current.compareTo(to) <= 0) {
                 days++;
             }
-        } while (beforeOrIsEqual(current, to));
+        } while (current.isBefore(to));
 
         return days;
     }
