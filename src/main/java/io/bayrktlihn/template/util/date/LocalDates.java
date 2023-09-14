@@ -183,6 +183,14 @@ public class LocalDates {
         return workDays(from, to, true, true, new ArrayList<>(), holidays);
     }
 
+    public static long workDays(LocalDate from, LocalDate to, List<DayMonth> holidayInEveryYear, List<LocalDate> holidays) {
+        return workDays(from, to, true, true, holidayInEveryYear, holidays);
+    }
+
+    public static long workDays(LocalDate from, LocalDate to, boolean weekendIsHoliday, List<DayMonth> holidayInEveryYear, List<LocalDate> holidays) {
+        return workDays(from, to, weekendIsHoliday, weekendIsHoliday, holidayInEveryYear, holidays);
+    }
+
     public static long workDays(LocalDate from, LocalDate to, boolean weekendIsHoliday) {
         return workDays(from, to, weekendIsHoliday, weekendIsHoliday, new ArrayList<>(), new ArrayList<>());
     }
