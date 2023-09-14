@@ -176,20 +176,20 @@ public class LocalDates {
     }
 
     public static long workDays(LocalDate from, LocalDate to) {
-        return workDays(from, to, true);
+        return workDays(from, to, true, true, new ArrayList<>(), new ArrayList<>());
     }
 
     public static long workDays(LocalDate from, LocalDate to, boolean weekendIsHoliday) {
-        return workDays(from, to, weekendIsHoliday, weekendIsHoliday, new ArrayList<>());
+        return workDays(from, to, weekendIsHoliday, weekendIsHoliday, new ArrayList<>(), new ArrayList<>());
     }
 
-    public static long workDays(LocalDate from, LocalDate to, boolean isSaturdayIsHoliday, boolean isSundayIsHoliday, List<DayMonth> holidaysInEveryYear) {
+    public static long workDays(LocalDate from, LocalDate to, boolean isSaturdayIsHoliday, boolean isSundayIsHoliday, List<DayMonth> holidaysInEveryYear, List<LocalDate> holidays) {
 
         int days = 0;
 
         LocalDate current = from;
         do {
-            current = nextWorkDate(current, isSaturdayIsHoliday, isSundayIsHoliday, holidaysInEveryYear);
+            current = nextWorkDate(current, isSaturdayIsHoliday, isSundayIsHoliday, holidaysInEveryYear, holidays);
             if (current.compareTo(to) <= 0) {
                 days++;
             }
