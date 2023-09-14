@@ -108,13 +108,13 @@ public class Dates {
 
     }
 
-    public static int maxYear(){
+    public static int maxYear() {
         Calendar calendar = Calendar.getInstance();
 
         return calendar.getActualMaximum(Calendar.YEAR);
     }
 
-    public static int minYear(){
+    public static int minYear() {
         Calendar calendar = Calendar.getInstance();
 
         return calendar.getActualMinimum(Calendar.YEAR);
@@ -126,7 +126,7 @@ public class Dates {
         int minYear = minYear();
 
         int maximumYear = calendar.getActualMaximum(Calendar.YEAR);
-        if (year < minYear-1 || year > maximumYear) {
+        if (year < minYear - 1 || year > maximumYear) {
             throw new IllegalArgumentException(String.format("Year must be between %s and %s", minYear, maximumYear));
         }
         calendar.set(Calendar.YEAR, year);
@@ -186,21 +186,19 @@ public class Dates {
     }
 
     public static int maximumDayOfMonth(int year, int month) {
-        if (month == 11) {
+        if (month == 2) {
             return isLeapYear(year) ? 29 : 28;
         }
 
 
         List<Integer> thirtyOneDaysMonths = thirtyOneDaysMonths();
-
         if (thirtyOneDaysMonths.stream().anyMatch(item -> item.equals(month))) {
             return 31;
         }
 
         List<Integer> thirtyDaysMonths = thirtyDaysMonths();
-
         if (thirtyDaysMonths.stream().anyMatch(item -> item.equals(month))) {
-            return 31;
+            return 30;
         }
 
         throw new RuntimeException();
@@ -212,7 +210,7 @@ public class Dates {
     }
 
     private static List<Integer> thirtyDaysMonths() {
-        return Arrays.asList(2, 4, 6, 9);
+        return Arrays.asList(4, 6, 9, 11);
     }
 
 

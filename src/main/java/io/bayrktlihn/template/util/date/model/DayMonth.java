@@ -12,4 +12,9 @@ import lombok.ToString;
 public class DayMonth {
     private int dayOfMonth;
     private int month;
+
+    public DayMonth(int dayOfMonth, int month) {
+        this.dayOfMonth = dayOfMonth;
+        this.month = month;
+    }
 }
