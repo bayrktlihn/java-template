@@ -9,6 +9,7 @@ import java.time.Year;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LocalDates {
@@ -56,13 +57,45 @@ public class LocalDates {
             throw new IllegalArgumentException(String.format("Month must be between %s and %s", 1, 12));
         }
 
-        int maximumDayOfMonth = Dates.maximumDayOfMonth(year, month);
+        int maximumDayOfMonth = maximumDayOfMonth(year, month);
 
         if (dayOfMonth < 1 || dayOfMonth > maximumDayOfMonth) {
             throw new IllegalArgumentException(
                     String.format("Day of month must be between %s and %s", 1, maximumDayOfMonth));
         }
         return LocalDate.of(year, month, dayOfMonth);
+    }
+
+    public static boolean isLeapYear(int year) {
+        return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+    }
+
+    private static List<Integer> thirtyOneDaysMonths() {
+        return Arrays.asList(1, 3, 5, 7, 8, 10, 12);
+    }
+
+    private static List<Integer> thirtyDaysMonths() {
+        return Arrays.asList(4, 6, 9, 11);
+    }
+
+    public static int maximumDayOfMonth(int year, int month) {
+        if (month == 2) {
+            return isLeapYear(year) ? 29 : 28;
+        }
+
+
+        List<Integer> thirtyOneDaysMonths = thirtyOneDaysMonths();
+        if (thirtyOneDaysMonths.stream().anyMatch(item -> item.equals(month))) {
+            return 31;
+        }
+
+        List<Integer> thirtyDaysMonths = thirtyDaysMonths();
+        if (thirtyDaysMonths.stream().anyMatch(item -> item.equals(month))) {
+            return 30;
+        }
+
+        throw new RuntimeException();
+
     }
 
     public static Period period(LocalDate from, LocalDate to) {
@@ -79,7 +112,7 @@ public class LocalDates {
     }
 
     public static LocalDate lastDayOfMonth(int year, int month) {
-        int maximumDayOfMonth = Dates.maximumDayOfMonth(year, month);
+        int maximumDayOfMonth = maximumDayOfMonth(year, month);
         return LocalDate.of(year, month, maximumDayOfMonth);
 //        LocalDate firstDayOfMonth = firstDayOfMonth(year, month);
 //        return firstDayOfMonth.with(TemporalAdjusters.lastDayOfMonth());
