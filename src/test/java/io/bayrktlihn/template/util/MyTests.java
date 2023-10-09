@@ -21,13 +21,13 @@ class MyTests {
     }
 
     private static void simulateInterestRate() {
-        LocalDate start = LocalDates.create(2006, 4, 21);
-        LocalDate today = LocalDates.create(2010, 10, 18);
+        LocalDate start = LocalDates.create(2006, 4, 22);
+        LocalDate today = LocalDates.create(2008, 12, 31);
 
-        InterestRate i1 = InterestRate.createWithMonthlyInterestRate(new BigDecimal("2.5"));
-        InterestRate i2 = InterestRate.createWithMonthlyInterestRate(new BigDecimal("2.5"));
-        InterestRate i3 = InterestRate.createWithMonthlyInterestRate(new BigDecimal("1.95"));
-        InterestRate i4 = InterestRate.createWithMonthlyInterestRate(new BigDecimal("1.5"));
+        InterestRate i1 = InterestRateV2Impl.createWithMonthlyInterestRate(new BigDecimal("2.5"));
+        InterestRate i2 = InterestRateV2Impl.createWithMonthlyInterestRate(new BigDecimal("2.5"));
+        InterestRate i3 = InterestRateV2Impl.createWithMonthlyInterestRate(new BigDecimal("1.95"));
+        InterestRate i4 = InterestRateV2Impl.createWithMonthlyInterestRate(new BigDecimal("1.5"));
 
         List<LocalDateFromToObject<InterestRate>> fromToList = new ArrayList<>();
         fromToList.add(new LocalDateFromToObject<>(LocalDateFromTo.createWithTo(LocalDates.create(2006, 4, 20)), i1));
@@ -67,7 +67,8 @@ class MyTests {
             LocalDateFromToObject<InterestRate> localDateFromToObject = collect.get(i);
             LocalDateFromTo fromTo = localDateFromToObject.getFromTo();
 
-            LocalDate from = i != firstIndex ? fromTo.getFrom().minus(1, ChronoUnit.DAYS) : fromTo.getFrom();
+            boolean firstItem = i == firstIndex;
+            LocalDate from = !firstItem ? fromTo.getFrom().minus(1, ChronoUnit.DAYS) : fromTo.getFrom();
 
             InterestCalculator interestCalculator = new InterestCalculator(localDateFromToObject.getObject(), from, fromTo.getTo());
             total = total.add(interestCalculator.calculate(mainAmount));

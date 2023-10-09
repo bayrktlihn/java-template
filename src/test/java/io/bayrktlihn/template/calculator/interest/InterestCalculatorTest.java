@@ -1,6 +1,7 @@
 package io.bayrktlihn.template.calculator.interest;
 
 import io.bayrktlihn.template.util.InterestRate;
+import io.bayrktlihn.template.util.InterestRateImpl;
 import io.bayrktlihn.template.util.date.LocalDates;
 import org.junit.jupiter.api.Test;
 
@@ -12,20 +13,19 @@ class InterestCalculatorTest {
 
     @Test
     void calculate() {
-        InterestRate interestRate = InterestRate.createWithMonthlyInterestRate(new BigDecimal("2.5"));
+        InterestRate interestRate = InterestRateImpl.createWithMonthlyInterestRate(new BigDecimal("2.5"));
         LocalDate from = LocalDates.create(2019, 7, 1);
-        LocalDate to = LocalDates.create(2019, 9, 29);
-        LocalDate toIter = to.minus(6, ChronoUnit.DAYS);
 
-        while(toIter.isBefore(to)){
-            InterestCalculator interestCalculator = new InterestCalculator(interestRate, from, toIter);
+        LocalDate to = from.plus(1, ChronoUnit.YEARS);
+        to = to.plus(24, ChronoUnit.MONTHS);
+        to = to.plus(24, ChronoUnit.DAYS);
 
-            BigDecimal amount = new BigDecimal("3131");
-            BigDecimal calculated = interestCalculator.calculate(amount);
-            System.out.println(calculated.add(amount));
+        InterestCalculator interestCalculator = new InterestCalculator(interestRate, from, to);
 
-            toIter = toIter.plus(1, ChronoUnit.DAYS);
-        }
+
+        BigDecimal calculated = interestCalculator.calculate(new BigDecimal("100"));
+
+        System.out.println(calculated);
 
 
     }
