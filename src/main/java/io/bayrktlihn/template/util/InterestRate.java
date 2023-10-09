@@ -63,7 +63,10 @@ public class InterestRate {
     public boolean equals(Object obj) {
         if (obj instanceof InterestRate) {
             InterestRate interestRate = (InterestRate) obj;
-            return interestRate.getDaily().setScale(2, RoundingMode.HALF_UP).equals(getDaily().setScale(2, RoundingMode.HALF_UP)) && interestRate.getYearly().setScale(2, RoundingMode.HALF_UP).equals(getYearly().setScale(2, RoundingMode.HALF_UP)) && interestRate.getMonthly().setScale(2, RoundingMode.HALF_UP).equals(getMonthly().setScale(2, RoundingMode.HALF_UP));
+            boolean equalsDailyInterestRate = interestRate.getDaily().setScale(2, RoundingMode.HALF_UP).equals(getDaily().setScale(2, RoundingMode.HALF_UP));
+            boolean equalsYearlyInterestRate = interestRate.getYearly().setScale(2, RoundingMode.HALF_UP).equals(getYearly().setScale(2, RoundingMode.HALF_UP));
+            boolean equalsMonthlyInterestRate = interestRate.getMonthly().setScale(2, RoundingMode.HALF_UP).equals(getMonthly().setScale(2, RoundingMode.HALF_UP));
+            return equalsDailyInterestRate && equalsYearlyInterestRate && equalsMonthlyInterestRate;
         }
         return false;
     }
