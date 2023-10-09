@@ -24,14 +24,14 @@ public class InterestRate {
     public static InterestRate createWithDailyInterestRate(BigDecimal dailyInterestRate) {
         dailyInterestRate = dailyInterestRate.setScale(15, RoundingMode.HALF_UP);
         BigDecimal yearlyInterestRate = dailyInterestRate.multiply(new BigDecimal("365"));
-        BigDecimal monthlyInterestRate = yearlyInterestRate.divide(new BigDecimal("12"), 15, RoundingMode.HALF_UP);
+        return createWithYearlyInterestRate(yearlyInterestRate);
+    }
 
-        InterestRate interestRate = new InterestRate();
-        interestRate.setDaily(dailyInterestRate);
-        interestRate.setYearly(yearlyInterestRate);
-        interestRate.setMonthly(monthlyInterestRate);
 
-        return interestRate;
+    public static InterestRate createWithMonthlyInterestRate(BigDecimal monthlyInterestRate) {
+        monthlyInterestRate = monthlyInterestRate.setScale(15, RoundingMode.HALF_UP);
+        BigDecimal yearlyInterestRate = monthlyInterestRate.multiply(new BigDecimal("12"));
+        return createWithYearlyInterestRate(yearlyInterestRate);
     }
 
     public static InterestRate createWithYearlyInterestRate(BigDecimal yearlyInterestRate) {
@@ -43,18 +43,6 @@ public class InterestRate {
         interestRate.setYearly(yearlyInterestRate);
         interestRate.setMonthly(monthlyInterestRate);
         interestRate.setDaily(dailyInsterestRate);
-        return interestRate;
-    }
-
-    public static InterestRate createWithMonthlyInterestRate(BigDecimal monthlyInterestRate) {
-        monthlyInterestRate = monthlyInterestRate.setScale(15, RoundingMode.HALF_UP);
-        BigDecimal yearlyInterestRate = monthlyInterestRate.multiply(new BigDecimal("12"));
-        BigDecimal dailyInterestRate = yearlyInterestRate.divide(new BigDecimal("365"), 15, RoundingMode.HALF_UP);
-
-        InterestRate interestRate = new InterestRate();
-        interestRate.setMonthly(monthlyInterestRate);
-        interestRate.setYearly(yearlyInterestRate);
-        interestRate.setDaily(dailyInterestRate);
         return interestRate;
     }
 

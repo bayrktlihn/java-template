@@ -33,7 +33,7 @@ class InterestRateTest {
     @Test
     void equal(){
         InterestRate withDailyInterestRate = InterestRate.createWithDailyInterestRate(new BigDecimal("1"));
-        InterestRate withMonthlyInterestRate = InterestRate.createWithMonthlyInterestRate(new BigDecimal("365").divide(new BigDecimal("12"), 15, RoundingMode.HALF_UP));
+        InterestRate withMonthlyInterestRate = InterestRate.createWithMonthlyInterestRate(new BigDecimal("30.416666666666667"));
         InterestRate withYearlyInterestRate = InterestRate.createWithYearlyInterestRate(new BigDecimal("365"));
 
         Assertions.assertEquals(withDailyInterestRate, withMonthlyInterestRate);
