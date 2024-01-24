@@ -18,8 +18,9 @@ public class BarcodeGenerator {
     private static byte[] createQRImage(String text, int width, int height, String fileType)
             throws WriterException, IOException {
 
-        Hashtable<EncodeHintType, ErrorCorrectionLevel> hintMap = new Hashtable<>();
+        Hashtable<EncodeHintType, Object> hintMap = new Hashtable<>();
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+        hintMap.put(EncodeHintType.CHARACTER_SET, "UTF-8");
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         BitMatrix byteMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height, hintMap);
 
@@ -40,8 +41,9 @@ public class BarcodeGenerator {
     private static byte[] createCode128Image(String text, int width, int height, String fileType)
             throws IOException {
 
-        Hashtable<EncodeHintType, ErrorCorrectionLevel> hintMap = new Hashtable<>();
+        Hashtable<EncodeHintType, Object> hintMap = new Hashtable<>();
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+        hintMap.put(EncodeHintType.CHARACTER_SET, "UTF-8");
         Code128Writer code128Writer = new Code128Writer();
         BitMatrix byteMatrix = code128Writer.encode(text, BarcodeFormat.CODE_128, width, height, hintMap);
 
