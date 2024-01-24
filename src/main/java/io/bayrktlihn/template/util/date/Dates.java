@@ -10,7 +10,12 @@ import java.time.Period;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 import java.util.function.BiFunction;
 
 public class Dates {
@@ -34,6 +39,12 @@ public class Dates {
     public static Date endOfToday() {
         Date now = now();
         return endOfDay(now);
+    }
+
+    public static int currentYear() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(now());
+        return calendar.get(Calendar.YEAR);
     }
 
     public static Date startOfFirstDayOfYear(int year) {
@@ -106,6 +117,23 @@ public class Dates {
         return result;
 
 
+    }
+
+    public static List<Integer> years(int begin, int end) {
+        return years(begin, end, true);
+    }
+
+    public static List<Integer> years(int begin, int end, boolean asc) {
+        List<Integer> years = new ArrayList<>();
+        for (int i = begin; i <= end; i++) {
+            years.add(i);
+        }
+
+        if (!asc) {
+            Collections.reverse(years);
+        }
+
+        return years;
     }
 
     public static int maxYear() {

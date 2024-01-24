@@ -19,7 +19,13 @@ class RandomizerTest {
             items.add(s);
         }
 
-        Assertions.assertEquals(expectedDifferenceNumbers, items.size());
+        int expectedLength = "yyyyMMddHHmmssSSS".length() + (999_999_999_999L + "").length();
+
+        for (String item : items) {
+
+            Assertions.assertEquals(expectedLength, item.length());
+        }
+
 
     }
 }

@@ -11,8 +11,17 @@ public class Randomizer {
     }
 
     public static String generateByDateTime() {
+        return generateByDateTime(999_999_999_999L);
+    }
+
+    public static String generateByDateTime(long maxRandomNumber) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
-        long randomNumber = ThreadLocalRandom.current().nextLong(1L, 999_999_999_999L);
-        return dateTimeFormatter.format(LocalDateTime.now()) + String.format("%012d", randomNumber);
+        long randomNumber = ThreadLocalRandom.current().nextLong(1L, maxRandomNumber);
+        String format = "%0" + numberOfDigits(maxRandomNumber) + "d";
+        return dateTimeFormatter.format(LocalDateTime.now()) + String.format(format, randomNumber);
+    }
+
+    private static int numberOfDigits(long number) {
+        return (number + "").length();
     }
 }

@@ -17,18 +17,28 @@ import java.util.List;
 class DatesTest {
 
     @Test
-    void createFail(){
+    void createFail() {
         Date date = Dates.create(1, 1, 1);
         System.out.println(date);
     }
 
     @Test
-    void maxYear(){
+    void maxYear() {
         System.out.println(Dates.maxYear());
     }
 
     @Test
-    void minYear(){
+    void years() {
+        List<Integer> years = Dates.years(1995, 2024);
+    }
+
+    @Test
+    void yearsDesc() {
+        List<Integer> years = Dates.years(1995, 2024, false);
+    }
+
+    @Test
+    void minYear() {
         System.out.println(Dates.minYear());
     }
 
@@ -60,21 +70,21 @@ class DatesTest {
     }
 
     @Test
-    void numberOfDaysInMonth(){
+    void numberOfDaysInMonth() {
         int countOfDayInMonth = Dates.numberOfDaysInMonth(1996, 2);
 
         Assertions.assertEquals(29, countOfDayInMonth);
     }
 
     @Test
-    void startOfFirstDayOfMonth(){
+    void startOfFirstDayOfMonth() {
         Date date = Dates.startOfFirstDayOfMonth(1995, 10);
 
         Assertions.assertEquals("01.10.1995 00.00", Dates.toString(date, "dd.MM.YYYY HH.mm"));
     }
 
     @Test
-    void numberOfDaysInYear(){
+    void numberOfDaysInYear() {
         int countOfDayInYear = Dates.numberOfDaysInYear(1900);
 
         Assertions.assertEquals(365, countOfDayInYear);
