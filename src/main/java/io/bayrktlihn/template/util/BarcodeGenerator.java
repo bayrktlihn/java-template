@@ -15,7 +15,7 @@ import java.util.Hashtable;
 
 public class BarcodeGenerator {
 
-    private static byte[] createQRImage(String text, int width, int height, String fileType)
+    public static byte[] createQRImage(String text, int width, int height, String fileType)
             throws WriterException, IOException {
 
         Hashtable<EncodeHintType, Object> hintMap = new Hashtable<>();
@@ -31,14 +31,14 @@ public class BarcodeGenerator {
 
     }
 
-    private static byte[] createQRImage(String text, int size, String fileType)
+    public static byte[] createQRImage(String text, int size, String fileType)
             throws WriterException, IOException {
 
         return createQRImage(text, size, size, fileType);
 
     }
 
-    private static byte[] createCode128Image(String text, int width, int height, String fileType)
+    public static byte[] createCode128Image(String text, int width, int height, String fileType)
             throws IOException {
 
         Hashtable<EncodeHintType, Object> hintMap = new Hashtable<>();
@@ -54,7 +54,7 @@ public class BarcodeGenerator {
 
     }
 
-    private static byte[] createCode128Image(String text, int size, String fileType)
+    public static byte[] createCode128Image(String text, int size, String fileType)
             throws IOException {
 
         return createCode128Image(text, size, size, fileType);
