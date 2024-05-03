@@ -8,9 +8,9 @@ public class Bytes {
 		throw new InstantiationException();
 	}
 
-	public static byte[] create(int length) {
+	public static byte[] create(int byteLength) {
 		SecureRandom secureRandom = new SecureRandom();
-		byte[] bytes = new byte[length];
+		byte[] bytes = new byte[byteLength];
 		secureRandom.nextBytes(bytes);
 		return bytes;
 	}
