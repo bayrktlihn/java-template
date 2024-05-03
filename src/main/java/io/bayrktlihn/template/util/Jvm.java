@@ -27,6 +27,9 @@ public class Jvm {
                                 String key = parts[0];
                                 String value = parts[1];
                                 passedSystemProperties.put(key, value);
+                            } else if(parts.length == 1){
+                                String key = parts[0];
+                                passedSystemProperties.put(key, null);
                             }
                         }
                     }
