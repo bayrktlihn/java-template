@@ -10,13 +10,19 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 public class DateFromToObject<T> {
-    private Date from;
-    private Date to;
+    private DateFromTo dateFromTo;
     private T object;
 
     public DateFromToObject(Date from, Date to, T object) {
-        this.from = from;
-        this.to = to;
+        this.dateFromTo = new DateFromTo(from, to);
         this.object = object;
+    }
+
+    public Date getFrom() {
+        return dateFromTo.getFrom();
+    }
+
+    public Date getTo() {
+        return dateFromTo.getTo();
     }
 }

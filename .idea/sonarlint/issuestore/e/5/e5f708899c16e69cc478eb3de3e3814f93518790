@@ -1,0 +1,11 @@
+
+΅
+java:S1488"^Immediately return this expression instead of assigning it to the temporary variable "result".(·ΊΤ©8‘‹ώσ1J$705e0c6a-614a-4825-a329-47ae6ded1859
+¦
+java:S1488$"^Immediately return this expression instead of assigning it to the temporary variable "result".(…Ε‹ªϋÿÿÿÿ8‘‹ώσ1J$981742bd-3020-421b-a84d-7612eaaf29d3
+
+java:S1612"<Replace this lambda with method reference 'DateFromTo::new'.(·ΊΤ©8–‹ώσ1J$10515257-e8e7-47c0-8156-a95155ea5129
+„
+java:S1612$"<Replace this lambda with method reference 'DateFromTo::new'.(…Ε‹ªϋÿÿÿÿ8—‹ώσ1J$b0ac756f-ffdb-447b-af83-7fe04d1ddd27
+„
+java:S1612)"<Replace this lambda with method reference 'DateFromTo::new'.(…Ε‹ªϋÿÿÿÿ8—‹ώσ1J$02a03f69-eb80-401a-ab9e-451edeb62063

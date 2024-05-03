@@ -1,6 +1,7 @@
 package io.bayrktlihn.template.util;
 
 import io.bayrktlihn.template.util.date.Dates;
+import io.bayrktlihn.template.util.date.model.DateFromTo;
 import io.bayrktlihn.template.util.date.model.DateFromToObject;
 import io.bayrktlihn.template.util.date.model.DayMonth;
 import org.junit.jupiter.api.Assertions;
@@ -23,6 +24,15 @@ class DatesTest {
     }
 
     @Test
+    void endOfPreviousDay(){
+        Date date = Dates.createStartOfDay(1996, 3, 1);
+        Date endOfPreviousDay = Dates.endOfPreviousDay(date);
+
+        Assertions.assertEquals(Dates.createEndOfDay(1996,2,29), endOfPreviousDay);
+
+    }
+
+    @Test
     void maxYear() {
         System.out.println(Dates.maxYear());
     }
@@ -40,6 +50,21 @@ class DatesTest {
     @Test
     void minYear() {
         System.out.println(Dates.minYear());
+    }
+
+    @Test
+    void days(){
+        Date endOfLastDayOfPreviousCurrentYear = Dates.create(1996, 2, 28 );
+        Date now = Dates.create(3996, 2, 28 );
+
+
+        long start = System.currentTimeMillis();
+        int days = Dates.days(endOfLastDayOfPreviousCurrentYear, now);
+        long end = System.currentTimeMillis();
+
+        Assertions.assertTrue(1000 > (end -start));
+//        Assertions.assertEquals(366 + 365 * 3, days);
+
     }
 
     @Test
@@ -96,6 +121,69 @@ class DatesTest {
     }
 
     @Test
+    void createPeriodItemsYearly_equalsValue_sizeMustBeZero() {
+        Date from = Dates.createStartOfDay(2020, 10, 10);
+        Date to = Dates.createStartOfDay(2020, 10, 10);
+
+        List<DateFromTo> periodItemsYearly = Dates.createPeriodItemsYearly(from, to, DateFromTo::new);
+
+        Assertions.assertEquals(0, periodItemsYearly.size());
+    }
+
+
+    @Test
+    void createPeriodItemsYearly_fromToValid_createSuccessfully() {
+        Date from = Dates.createStartOfDay(2020, 10, 10);
+        Date to = Dates.createEndOfDay(2022, 10, 8);
+
+        List<DateFromTo> periodItemsYearly = Dates.createPeriodItemsYearly(from, to, (date, date2) -> new DateFromTo(date, date2));
+
+        Assertions.assertEquals(3, periodItemsYearly.size());
+
+
+        for (int i = 0; i < periodItemsYearly.size(); i++) {
+            DateFromTo dateFromTo = periodItemsYearly.get(i);
+
+            if (i == 0) {
+                Assertions.assertEquals(from, dateFromTo.getFrom());
+                Assertions.assertEquals(Dates.createEndOfLastDayOfYear(2020), dateFromTo.getTo());
+            }
+
+            if (i == 1) {
+                Assertions.assertEquals(Dates.createStartOfFirsDayOfYear(2021), dateFromTo.getFrom());
+                Assertions.assertEquals(Dates.createEndOfLastDayOfYear(2021), dateFromTo.getTo());
+            }
+
+            if (i == 2) {
+                Assertions.assertEquals(Dates.createStartOfFirsDayOfYear(2022), dateFromTo.getFrom());
+                Assertions.assertEquals(dateFromTo.getTo(), dateFromTo.getTo());
+            }
+
+        }
+
+
+    }
+
+    @Test
+    void createPeriodItemsYearly(){
+        Date from = Dates.createStartOfDay(2020, 10, 10);
+        Date to = Dates.createEndOfDay(2022, 10, 8);
+
+        List<DateFromTo> periodItemsYearly = Dates.createPeriodItemsYearly(from, to, (date, date2) -> new DateFromTo(date, date2));
+
+
+        if (periodItemsYearly != null && periodItemsYearly.size() > 1) {
+            Date tmpTo = periodItemsYearly.get(0).getTo();
+            for (int i = 1; i < periodItemsYearly.size(); i++) {
+                periodItemsYearly.get(i).setFrom((Date) tmpTo.clone());
+
+                tmpTo = periodItemsYearly.get(i).getTo();
+            }
+        }
+
+    }
+
+    @Test
     void create() {
         Instant now = Instant.now();
         Instant addOneHours = now.plus(1, ChronoUnit.HOURS);
@@ -111,6 +199,20 @@ class DatesTest {
             System.out.println(stringDateFromToObject.getObject());
             System.out.println();
         }
+    }
+
+    @Test
+    void plusDay(){
+        Date date = Dates.createStartOfDay(1996, 12, 31);
+        Date addedOneDay = Dates.plusDay(date, 1);
+        Assertions.assertEquals(Dates.createStartOfDay(1997, 1,1), addedOneDay);
+    }
+
+    @Test
+    void create_withHourMinuteSecondWithoutMilliSecond(){
+        Date date = Dates.create(1996, 2, 29, 16, 10, 10);
+        System.out.println(date);
+
     }
 
     @Test

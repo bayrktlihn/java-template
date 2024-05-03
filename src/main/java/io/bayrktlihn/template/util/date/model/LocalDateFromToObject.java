@@ -1,6 +1,5 @@
-package io.bayrktlihn.template.util;
+package io.bayrktlihn.template.util.date.model;
 
-import io.bayrktlihn.template.util.date.model.LocalDateFromTo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

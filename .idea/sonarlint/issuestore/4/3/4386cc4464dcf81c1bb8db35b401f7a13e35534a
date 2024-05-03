@@ -1,0 +1,9 @@
+
+ˆ	java:S112Q"FDefine and throw a dedicated exception instead of using a generic one.(Ö±ƒí8¸ÏÆ€ô1J$f80defd6-9176-48a1-a2bc-b38cd07756b9
+	java:S112ã"FDefine and throw a dedicated exception instead of using a generic one.(¯åÕøÿÿÿÿ8¸ÏÆ€ô1J$5a7b9ddf-d6e9-47d9-bc4a-fe0c8e9fc43a
+Ÿ
+java:S1192Æ"VDefine a constant instead of duplicating this literal "Date must not be null" 4 times.(Ò¿ºÎşÿÿÿÿ8ºÏÆ€ô1J$da9f26ef-25f7-4481-8d8b-c9d7f249497e
+¥
+java:S1192Ê"\Define a constant instead of duplicating this literal "Year must be positive value" 4 times.(è¶¯ôûÿÿÿÿ8ºÏÆ€ô1J$c9eac489-f181-4b63-9bfb-d971132be877
+}
+java:S1128":Remove this unused import 'java.time.temporal.ChronoUnit'.(Á…§8‡èÇ€ô1J$72c5deba-9c3f-4772-b8a7-fa11a4de988a

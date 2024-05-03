@@ -59,6 +59,61 @@ public class Dates {
         return calendar.getTime();
     }
 
+    public static Date startOfFirstDayOfCurrentYear() {
+        return startOfFirstDayOfYear(currentYear());
+    }
+
+    public static int days(Date start, Date end) {
+
+        if (start == null) {
+            throw new IllegalArgumentException("Start must not be null");
+        }
+
+        if (end == null) {
+            throw new IllegalArgumentException("End must not be null");
+        }
+
+
+        start = startOfDay(start);
+        end = startOfDay(end);
+
+        if (isBefore(end, start)) {
+            throw new RuntimeException("End must be after than start");
+        }
+
+        boolean equals = start.equals(end);
+
+        int days = 0;
+        while (!equals) {
+            days++;
+            start = startOfNextDay(start);
+            equals = start.equals(end);
+        }
+
+        return days;
+
+    }
+
+
+    public static int getYear(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.get(Calendar.YEAR);
+    }
+
+    public static int getMonth(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.get(Calendar.MONTH) + 1;
+    }
+
+    public static int getDayOfMonth(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.get(Calendar.DAY_OF_MONTH);
+    }
+
+
     public static Date endOfLastDayOfYear(int year) {
         Date endOfToday = endOfToday();
 
@@ -69,6 +124,11 @@ public class Dates {
         calendar.set(Calendar.DAY_OF_MONTH, 31);
 
         return calendar.getTime();
+    }
+
+
+    public static Date endOfLastDayOfCurrentYear() {
+        return endOfLastDayOfYear(currentYear());
     }
 
     public static Date startOfDay(Date date) {
@@ -95,10 +155,10 @@ public class Dates {
         return calendar.getTime();
     }
 
-    public static <T> List<T> createPeriodItems(Date from, Date to, long periodValue, TemporalUnit periodUnit, long delayValue, TemporalUnit delayUnit, BiFunction<Date, Date, T> toBeGenerateObject) {
+    public static <T> List<T> createPeriodItems(Date from, Date to, long periodValue, TemporalUnit periodValueUnit, long delayValue, TemporalUnit delayValueUnit, BiFunction<Date, Date, T> toBeGenerateObject) {
         List<T> result = new ArrayList<>();
 
-        Instant periodEndInstant = from.toInstant().plus(periodValue, periodUnit);
+        Instant periodEndInstant = from.toInstant().plus(periodValue, periodValueUnit);
 
         Date periodStart = from;
         Date periodEnd = Date.from(periodEndInstant);
@@ -107,8 +167,8 @@ public class Dates {
             T t = toBeGenerateObject.apply(periodStart, periodEnd);
             result.add(t);
 
-            Instant periodStartInstant = periodEnd.toInstant().plus(delayValue, delayUnit);
-            periodEndInstant = periodStartInstant.plus(periodValue, periodUnit);
+            Instant periodStartInstant = periodEnd.toInstant().plus(delayValue, delayValueUnit);
+            periodEndInstant = periodStartInstant.plus(periodValue, periodValueUnit);
 
             periodStart = Date.from(periodStartInstant);
             periodEnd = Date.from(periodEndInstant);
@@ -119,11 +179,154 @@ public class Dates {
 
     }
 
+    public static boolean isBefore(Date firstDate, Date secondDate) {
+        if (firstDate == null || secondDate == null) {
+            throw new IllegalArgumentException("First date or Second Date must not be null");
+        }
+        return firstDate.compareTo(secondDate) < 0;
+    }
+
+    public static boolean isAfter(Date firstDate, Date secondDate) {
+        if (firstDate == null || secondDate == null) {
+            throw new IllegalArgumentException("First date or Second Date must not be null");
+        }
+        return firstDate.compareTo(secondDate) > 0;
+    }
+
+    public static Date plusYear(Date date, int year) {
+        if (date == null) {
+            throw new IllegalArgumentException("Date must not be null");
+        }
+
+        if (year < 1) {
+            throw new IllegalArgumentException("Year must be positive value");
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        calendar.add(Calendar.YEAR, year);
+
+        return calendar.getTime();
+    }
+
+    public static Date minusYear(Date date, int year) {
+        if (date == null) {
+            throw new IllegalArgumentException("Date must not be null");
+        }
+
+        if (year < 1) {
+            throw new IllegalArgumentException("Year must be positive value");
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.YEAR, year * -1);
+
+        return calendar.getTime();
+    }
+
+    public static Date minusDay(Date date, int day) {
+
+        if (date == null) {
+            throw new IllegalArgumentException("Date must not be null");
+        }
+
+        if (day < 1) {
+            throw new IllegalArgumentException("Year must be positive value");
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_YEAR, day * -1);
+
+        return calendar.getTime();
+    }
+
+    public static Date plusDay(Date date, int day) {
+        if (date == null) {
+            throw new IllegalArgumentException("Date must not be null");
+        }
+
+        if (day < 1) {
+            throw new IllegalArgumentException("Year must be positive value");
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_YEAR, day);
+
+        return calendar.getTime();
+    }
+
+    public static Date startOfFirstDayOfNextYear(int year) {
+        Date startOfFirstDayOfYear = startOfFirstDayOfYear(year);
+        return plusYear(startOfFirstDayOfYear, 1);
+    }
+
+
+    public static Date startOfFirstDayOfNextYearOfCurrentYear() {
+        return startOfFirstDayOfNextYear(currentYear());
+    }
+
+
+    public static Date endOfLastDayOfPreviousYear(int year) {
+        Date endOfLastDayOfYear = endOfLastDayOfYear(year);
+        return minusYear(endOfLastDayOfYear, 1);
+    }
+
+    public static Date endOfLastDayOfPreviousYearOfCurrentYear() {
+        return endOfLastDayOfPreviousYear(currentYear());
+    }
+
+
+    public static <T> List<T> createPeriodItemsYearly(Date from, Date to, BiFunction<Date, Date, T> toBeGenerateObject) {
+
+        if (from == null || to == null) {
+            throw new IllegalArgumentException();
+        }
+
+        if (isBefore(to, from)) {
+            throw new IllegalArgumentException("From value must before than to value");
+        }
+
+        List<T> result = new ArrayList<>();
+
+        Date tmpFrom = (Date) from.clone();
+
+        int fromYear = getYear(tmpFrom);
+        Date endOfLastDayOfFromYear = endOfLastDayOfYear(fromYear);
+
+        boolean before = isBefore(endOfLastDayOfFromYear, to);
+
+        while (before) {
+            T t = toBeGenerateObject.apply(tmpFrom, endOfLastDayOfFromYear);
+
+            result.add(t);
+
+            int yearOfEndOfDayOfFromYear = getYear(endOfLastDayOfFromYear);
+
+            tmpFrom = startOfFirstDayOfNextYear(yearOfEndOfDayOfFromYear);
+            fromYear = getYear(tmpFrom);
+            endOfLastDayOfFromYear = endOfLastDayOfYear(fromYear);
+            before = isBefore(endOfLastDayOfFromYear, to);
+        }
+
+        if (isBefore(tmpFrom, to)) {
+            T t = toBeGenerateObject.apply(tmpFrom, to);
+            result.add(t);
+        }
+
+        return result;
+    }
+
+
     public static List<Integer> years(int begin, int end) {
         return years(begin, end, true);
     }
 
     public static List<Integer> years(int begin, int end, boolean asc) {
+
         List<Integer> years = new ArrayList<>();
         for (int i = begin; i <= end; i++) {
             years.add(i);
@@ -146,6 +349,40 @@ public class Dates {
         Calendar calendar = Calendar.getInstance();
 
         return calendar.getActualMinimum(Calendar.YEAR);
+    }
+
+    public static Date create(int year, int month, int dayOfMonth, int hour, int minute, int second) {
+        Calendar calendar = Calendar.getInstance();
+        int milliSecond = calendar.get(Calendar.MILLISECOND);
+        return create(year, month, dayOfMonth, hour, minute, second, milliSecond);
+    }
+
+    public static Date create(int year, int month, int dayOfMonth, int hour, int minute, int second, int millisecond) {
+        Date date = create(year, month, dayOfMonth);
+
+        if (hour < 0 || hour > 23) {
+            throw new IllegalArgumentException("Hour must be between 0 and 23");
+        }
+
+        if (minute < 0 || minute > 59) {
+            throw new IllegalArgumentException("Minute must be between 0 and 59");
+        }
+
+        if (second < 0 || second > 59) {
+            throw new IllegalArgumentException("Second must be between 0 and 59");
+        }
+
+        if (millisecond < 0 || millisecond > 999) {
+            throw new IllegalArgumentException("Millisecond must be between 0 and 999");
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, second);
+        calendar.set(Calendar.MILLISECOND, millisecond);
+        return calendar.getTime();
     }
 
     public static Date create(int year, int month, int dayOfMonth) {
@@ -174,6 +411,19 @@ public class Dates {
         return calendar.getTime();
 
     }
+
+    public static Date endOfPreviousDay(Date date) {
+        Date endOfDay = endOfDay(date);
+        return minusDay(endOfDay, 1);
+    }
+
+    public static Date startOfNextDay(Date date) {
+        Date endOfDay = startOfDay(date);
+        return plusDay(endOfDay, 1);
+    }
+
+
+
 
     public static Period period(Date from, Date to) {
         Instant fromInstant = from.toInstant();
@@ -210,7 +460,8 @@ public class Dates {
     }
 
     public static Date endOfLastDayOfMonth(int year, int month) {
-        return createStartOfDay(year, month, 1);
+        int numberOfDaysInMonth = numberOfDaysInMonth(year, month);
+        return createEndOfDay(year, month, numberOfDaysInMonth);
     }
 
     public static int maximumDayOfMonth(int year, int month) {
@@ -242,26 +493,31 @@ public class Dates {
     }
 
 
-    public static Date currentDateOrNextWorkDate(Date date, List<DayMonth> holidaysInEveryYear) {
-        return currentDateOrNextWorkDate(date, true, true, holidaysInEveryYear);
+
+    public static Date currentDateOrNextWorkDate(Date date) {
+        return currentDateOrNextWorkDate(date,  true);
     }
 
+
+
     public static Date currentDateOrNextWorkDate(Date date, boolean weekendIsHoliday) {
-        return currentDateOrNextWorkDate(date, true, true, new ArrayList<>());
+        return currentDateOrNextWorkDate(date, weekendIsHoliday, new ArrayList<>());
     }
+
+    public static Date currentDateOrNextWorkDate(Date date, List<DayMonth> holidaysInEveryYear) {
+        return currentDateOrNextWorkDate(date, true, holidaysInEveryYear);
+    }
+
 
     public static Date currentDateOrNextWorkDate(Date date, boolean weekendIsHoliday, List<DayMonth> holidaysInEveryYear) {
         return currentDateOrNextWorkDate(date, weekendIsHoliday, weekendIsHoliday, holidaysInEveryYear);
     }
 
-    public static Date currentDateOrNextWorkDate(Date date) {
-        return currentDateOrNextWorkDate(date, true, true, new ArrayList<>());
-    }
 
     public static Date currentDateOrNextWorkDate(Date date, boolean isSaturdayIsHoliday, boolean isSundayIsHoliday, List<DayMonth> holidaysInEveryYear) {
         if (isHoliday(date, isSaturdayIsHoliday, isSundayIsHoliday, holidaysInEveryYear)) {
-            Instant addedOneDay = date.toInstant().plus(1, ChronoUnit.DAYS);
-            return currentDateOrNextWorkDate(Date.from(addedOneDay), isSaturdayIsHoliday, isSundayIsHoliday, holidaysInEveryYear);
+            Date addedOneDay = plusDay(date, 1);
+            return currentDateOrNextWorkDate(addedOneDay, isSaturdayIsHoliday, isSundayIsHoliday, holidaysInEveryYear);
         }
         return date;
     }
@@ -272,9 +528,18 @@ public class Dates {
         return startOfDay(date);
     }
 
+    public static Date createStartOfFirsDayOfYear(int year) {
+        return createStartOfDay(year, 1, 1);
+    }
+
+
     public static Date createEndOfDay(int year, int month, int dayOfMonth) {
         Date date = create(year, month, dayOfMonth);
         return endOfDay(date);
+    }
+
+    public static Date createEndOfLastDayOfYear(int year) {
+        return createEndOfDay(year, 12,31);
     }
 
     public static String toString(Date date, String pattern) {
