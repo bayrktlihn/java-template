@@ -1,8 +1,7 @@
 package io.bayrktlihn.template.util;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.InputStream;
 import java.util.Map;
 import java.util.Properties;
 
@@ -26,25 +25,29 @@ public class ApplicationProperties {
         return properties;
     }
 
+
+
     private Properties loadProperties() {
         Properties properties = new Properties();
 
         String profile = System.getProperty(PROFILE_KEY);
 
-        Path path = PathUtil.getPathFromClasspath("application.properties");
+
+        InputStream pathStream = ClassPathUtil.getInputStream("application.properties");
+
 
         try {
-            if (path != null) {
-                properties.load(Files.newInputStream(path));
+            if (pathStream != null) {
+                properties.load(pathStream);
                 if (profile == null) {
                     profile = properties.getProperty(PROFILE_KEY);
                 }
             }
 
             if (profile != null) {
-                Path profilePath = PathUtil.getPathFromClasspath("application-" + profile + ".properties");
-                if (profilePath != null) {
-                    properties.load(Files.newInputStream(profilePath));
+                InputStream profileStream = ClassPathUtil.getInputStream("application-" + profile + ".properties");
+                if (profileStream != null) {
+                    properties.load(profileStream);
                 }
             }
 

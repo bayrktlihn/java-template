@@ -1,7 +1,9 @@
 
-W
-java:S1118	":Add a private constructor to hide the implicit public one.(νΪΉ8†ΜµΔ1
-`
-java:S3064">Fully initialize "passedSystemProperties" before assigning it.(§ίζχωÿÿÿÿ8§η¶Δ1
-[
-java:S2168"9Remove this dangerous instance of double-checked locking.(χ¦θόÿÿÿÿ8§η¶Δ1
+}
+java:S1118	":Add a private constructor to hide the implicit public one.(νΪΉ8†ΜµΔ1J$76b966f6-7f11-4c74-bd7f-d4e316416ba7
+•
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ƒ–φβ8ιν€τ1J$a6d63ac4-d151-4e7f-bbff-e5d44a58e2e9
+†
+java:S3064">Fully initialize "passedSystemProperties" before assigning it.(§ίζχωÿÿÿÿ8§η¶Δ1J$7b354f54-71c4-4257-98fe-5910a6531ec6
+
+java:S2168"9Remove this dangerous instance of double-checked locking.(χ¦θόÿÿÿÿ8§η¶Δ1J$86e99bb4-6211-4208-ba4e-f37de53b976f

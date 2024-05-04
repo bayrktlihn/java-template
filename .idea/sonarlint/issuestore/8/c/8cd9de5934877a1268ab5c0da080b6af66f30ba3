@@ -1,14 +1,10 @@
 
-`	java:S112?"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-f
-java:S2095&"IUse try-with-resources or close this "InputStream" in a "finally" clause.(‡åÇ’8¯åÂò1
-k
-java:S2095/"IUse try-with-resources or close this "InputStream" in a "finally" clause.(‘¬ƒáıÿÿÿÿ8°åÂò1
-¯
-java:S6548	"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(İŒ÷Í
-B
-java:S1172",Remove this unused method parameter "clazz".(Äœè²
-T
-java:S1117">Rename "properties" which hides the field declared at line 15.(™Ùß
-O
-java:S2168G"9Remove this dangerous instance of double-checked locking.(ìéÊŞ
+	java:S112B"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ªÿô1J$9ca0c632-4cf1-4f2d-8cb8-31c5ead30651
+Ü
+java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(İŒ÷Í8¸ÿô1J$2a3dc729-1378-4f20-a355-192a3adf1cdb
+o
+java:S1172",Remove this unused method parameter "clazz".(Äœè²8ºÿô1J$5e52ebca-6c8b-4cda-809e-0b50b041d2b6
+
+java:S1117">Rename "properties" which hides the field declared at line 14.(™Ùß8»ÿô1J$39bd3788-90b2-42f1-8809-e90a6118172e
+|
+java:S2168J"9Remove this dangerous instance of double-checked locking.(ìéÊŞ8¾ÿô1J$b4692cf9-4866-4d78-8cab-ba5aac330ce8

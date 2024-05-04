@@ -22,8 +22,6 @@ class JasperReportsTest {
 	@Test
 	void test() {
 		Map<String, Object> params = new HashMap<>();
-		Path path = PathUtil.getPathFromClasspath("jasper-reports/Bayrktlihn.jrxml");
-		Path imagePath = PathUtil.getPathFromClasspath("jasper-reports/img/Baykar.png");
 
 		List<Person> persons = new ArrayList<>();
 		persons.add(Person.builder().firstName("Alihan").lastName("Bayraktar").gender(Gender.MAN)
@@ -34,9 +32,9 @@ class JasperReportsTest {
 				.birthDate(Dates.create(1995, 11, 29)).build());
 
 		try {
-			params.put("image", Files.newInputStream(imagePath));
+			params.put("image", ClassPathUtil.getInputStream("jasper-reports/img/Baykar.png"));
 			params.put("persons", new JRBeanCollectionDataSource(persons));
-			InputStream inputStream = Files.newInputStream(path);
+			InputStream inputStream = ClassPathUtil.getInputStream("jasper-reports/Bayrktlihn.jrxml");
 
 			byte[] createdPdf = JasperReports.createPdf(inputStream, params);
 

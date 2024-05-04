@@ -7,7 +7,6 @@ import io.bayrktlihn.template.util.date.model.DayMonth;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.Path;
 import java.time.Instant;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
@@ -24,11 +23,11 @@ class DatesTest {
     }
 
     @Test
-    void endOfPreviousDay(){
+    void endOfPreviousDay() {
         Date date = Dates.createStartOfDay(1996, 3, 1);
         Date endOfPreviousDay = Dates.endOfPreviousDay(date);
 
-        Assertions.assertEquals(Dates.createEndOfDay(1996,2,29), endOfPreviousDay);
+        Assertions.assertEquals(Dates.createEndOfDay(1996, 2, 29), endOfPreviousDay);
 
     }
 
@@ -53,16 +52,16 @@ class DatesTest {
     }
 
     @Test
-    void days(){
-        Date endOfLastDayOfPreviousCurrentYear = Dates.create(1996, 2, 28 );
-        Date now = Dates.create(3996, 2, 28 );
+    void days() {
+        Date endOfLastDayOfPreviousCurrentYear = Dates.create(1996, 2, 28);
+        Date now = Dates.create(3996, 2, 28);
 
 
         long start = System.currentTimeMillis();
         int days = Dates.days(endOfLastDayOfPreviousCurrentYear, now);
         long end = System.currentTimeMillis();
 
-        Assertions.assertTrue(1000 > (end -start));
+        Assertions.assertTrue(1000 > (end - start));
 //        Assertions.assertEquals(366 + 365 * 3, days);
 
     }
@@ -165,7 +164,7 @@ class DatesTest {
     }
 
     @Test
-    void createPeriodItemsYearly(){
+    void createPeriodItemsYearly() {
         Date from = Dates.createStartOfDay(2020, 10, 10);
         Date to = Dates.createEndOfDay(2022, 10, 8);
 
@@ -202,14 +201,14 @@ class DatesTest {
     }
 
     @Test
-    void plusDay(){
+    void plusDay() {
         Date date = Dates.createStartOfDay(1996, 12, 31);
         Date addedOneDay = Dates.plusDay(date, 1);
-        Assertions.assertEquals(Dates.createStartOfDay(1997, 1,1), addedOneDay);
+        Assertions.assertEquals(Dates.createStartOfDay(1997, 1, 1), addedOneDay);
     }
 
     @Test
-    void create_withHourMinuteSecondWithoutMilliSecond(){
+    void create_withHourMinuteSecondWithoutMilliSecond() {
         Date date = Dates.create(1996, 2, 29, 16, 10, 10);
         System.out.println(date);
 
@@ -217,9 +216,7 @@ class DatesTest {
 
     @Test
     void currentDateOrNextWorkDate() {
-
-        Path path = PathUtil.getPathFromClasspath("holidays_in_every_year_tr.json");
-        String fileContent = FileUtil.readAll(path.toFile());
+        String fileContent = ClassPathUtil.getFileContent("holidays_in_every_year_tr.json");
 
         List<DayMonth> holidaysInEveryYear = JSON.parseList(fileContent, DayMonth.class);
 

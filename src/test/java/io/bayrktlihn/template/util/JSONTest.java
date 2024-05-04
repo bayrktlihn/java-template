@@ -1,7 +1,11 @@
 package io.bayrktlihn.template.util;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import io.bayrktlihn.template.util.date.model.DayMonth;
 import io.bayrktlihn.template.util.date.Dates;
@@ -24,8 +28,7 @@ class JSONTest {
 
 	@Test
 	void dayMonthTest(){
-		Path path = PathUtil.getPathFromClasspath("holidays_in_every_year_tr.json");
-		String fileContent = FileUtil.readAll(path.toFile());
+		String fileContent = ClassPathUtil.getFileContent("holidays_in_every_year_tr.json");
 
 		List<DayMonth> dayMonths = JSON.parseList(fileContent, DayMonth.class);
 		for (DayMonth dayMonth : dayMonths) {
